@@ -1,6 +1,6 @@
 ID,Policy_Start_Date,Policy_End_Date,Gender,Age,First_Transaction_Date,No_Pol,Car_Category,Subject_Car_Colour,Subject_Car_Make,LGA_Name,State,ProductName
 ID_6JEYVLP,2010-01-01,2010-12-31,Male,35.0,2010-01-01,1,JEEP,As Attached,ACURA,Lagos Island,Lagos,CarSafe
-ID_BX1PNZ6,2010-01-01,2011-05-31,Other,93.0,2010-01-01,7,JEEP,As Attached,Honda,Lagos Island,Lagos,CarSafe
+ID_BX1PNZ6,2010-01-01,2011-05-31,Entity,93.0,2010-01-01,7,JEEP,As Attached,Honda,Lagos Island,Lagos,CarSafe
 ID_83NJU2D,2010-01-01,2010-12-31,Male,41.0,2010-01-01,4,JEEP,White,Ford,Victoria Island,Lagos,Muuve
 ID_Q6GKOAQ,2010-01-02,2011-01-01,Female,45.0,2010-01-02,1,JEEP,White,Ford,Victoria Island,Lagos,Car Classic
 ID_WB3E64W,2010-01-02,2011-01-01,Male,66.0,2010-01-02,1,Saloon,As Attached,TOYOTA,Victoria Island,Lagos,CarSafe
@@ -40,7 +40,7 @@ ID_49Q5M8L,2010-01-13,2011-01-12,Male,31.0,2010-01-13,1,Saloon,Black,TOYOTA,Eti-
 ID_LETUT97,2010-01-13,2011-01-12,Female,34.0,2010-01-13,1,JEEP,Black,Hyundai,Eti-Osa,Eti-Osa,Car Classic
 ID_8HQMEO6,2010-01-13,2011-01-12,Female,34.0,2010-01-13,1,Saloon,Black,Hyundai,Eti-Osa,Eti-Osa,Car Classic
 ID_ZUJAFUP,2010-01-14,2011-01-13,Male,43.0,2010-01-14,1,Saloon,Silver,Hyundai,Surulere,Lagos,Car Classic
-ID_D4B39A9,2010-01-14,2011-01-13,Other,41.0,2010-01-14,4,Pick Up,As Attached,TOYOTA,Ikoyi,Lagos,CVTP
+ID_D4B39A9,2010-01-14,2011-01-13,Entity,41.0,2010-01-14,4,Pick Up,As Attached,TOYOTA,Ikoyi,Lagos,CVTP
 ID_I4TSLWL,2010-01-14,2011-01-13,Male,35.0,2010-01-14,1,Saloon,As Attached,Honda,Enugu North,Enugu-North,CarSafe
 ID_I1OAA3I,2010-01-14,2011-01-13,Male,40.0,2010-01-14,1,Saloon,As Attached,BMW,Enugu North,Enugu-North,CarSafe
 ID_25U943Y,2010-01-15,2011-01-14,Male,63.0,2010-01-15,2,Saloon,As Attached,Hyundai,Enugu North,Enugu-North,Car Classic
@@ -107,7 +107,7 @@ ID_CHL6YQ1,2010-01-29,2011-01-28,Female,73.0,2010-01-29,3,Saloon,Silver,TOYOTA,L
 ID_4IV59U8,2010-01-29,2011-01-28,Female,56.0,2010-01-29,1,Saloon,Green,TOYOTA,Lagos Island,Lagos,CarSafe
 ID_M5K04H2,2010-01-29,2011-01-28,Male,38.0,2010-01-29,1,Saloon,Green,TOYOTA,Lagos Island,Lagos,Car Classic
 ID_EIBSURI,2010-01-30,2011-01-29,Male,35.0,2010-01-30,1,Saloon,As Attached,Hyundai,Ibadan North West,Ibadan-West,CarSafe
-ID_WT2G575,2010-01-30,2011-01-29,Other,20.0,2010-01-30,1,Saloon,As Attached,TOYOTA,Ibadan North West,Ibadan-West,Customized Motor
+ID_WT2G575,2010-01-30,2011-01-29,Entity,20.0,2010-01-30,1,Saloon,As Attached,TOYOTA,Ibadan North West,Ibadan-West,Customized Motor
 ID_G3YM4FA,2010-01-30,2011-01-29,Female,44.0,2010-01-30,1,Saloon,Wine,Mitsubishi,Akoka,Lagos,CarSafe
 ID_TGALQY1,2010-01-30,2011-01-29,Male,52.0,2010-01-30,1,Saloon,Wine,TOYOTA,Akoka,Lagos,Car Classic
 ID_S4X28LN,2010-01-31,2011-01-30,Male,40.0,2010-01-31,1,Saloon,Silver,Honda,Lekki,Lagos,CarSafe
@@ -130,7 +130,7 @@ ID_XYCVQUL,2010-02-04,2011-02-03,Male,44.0,2010-02-04,1,Saloon,Red,TOYOTA,Abuja 
 ID_5W5B7G5,2010-02-05,2011-02-04,Male,20.0,2010-02-05,1,Saloon,Blue,TOYOTA,Victoria Island,Lagos,CarSafe
 ID_G8UAETL,2010-02-05,2011-02-04,Female,1.0,2010-02-05,1,Saloon,Blue,Nissan,Victoria Island,Lagos,CarSafe
 ID_BA5HNHU,2010-02-05,2011-02-04,Male,40.0,2010-02-05,1,Saloon,Blue,Honda,Victoria Island,Lagos,CarSafe
-ID_N5SDIE0,2010-02-05,2011-02-04,Other,41.0,2010-02-05,2,Saloon,Blue,TOYOTA,Victoria Island,Lagos,CVTP
+ID_N5SDIE0,2010-02-05,2011-02-04,Entity,41.0,2010-02-05,2,Saloon,Blue,TOYOTA,Victoria Island,Lagos,CVTP
 ID_0MOXT38,2010-02-05,2011-02-04,Male,39.0,2010-02-05,1,Saloon,Blue,TOYOTA,Ibeju/Lekki,Ibeju-Lekki,CarSafe
 ID_MU2XNPA,2010-02-05,2011-02-04,Female,41.0,2010-02-05,1,JEEP,Blue,TOYOTA,Ibeju/Lekki,Ibeju-Lekki,Car Plus
 ID_YFJHU92,2010-02-06,2011-02-05,Female,39.0,2010-02-06,1,Saloon,Silver,TOYOTA,Ojodu,Lagos,Car Classic
@@ -159,7 +159,7 @@ ID_7HJQ7CZ,2010-02-12,2011-02-11,Male,40.0,2010-02-12,1,Saloon,White,TOYOTA,Lekk
 ID_TIE3KL6,2010-02-12,2011-02-11,Female,44.0,2010-02-12,1,Saloon,White,Lexus,Lekki,Lagos,Car Classic
 ID_C6TX181,2010-02-12,2011-02-11,Male,12.0,2010-02-12,2,Saloon,As Attached,Mercedes,Lekki,Lagos,Customized Motor
 ID_H8E9Y8G,2010-02-13,2011-02-12,Female,35.0,2010-02-13,1,Saloon,As Attached,Honda,Lekki,Lagos,CarSafe
-ID_7DP4IRV,2010-02-13,2011-02-12,Other,60.0,2010-02-13,1,Saloon,As Attached,Kia,Lekki,Lagos,CarSafe
+ID_7DP4IRV,2010-02-13,2011-02-12,Joint Gender,60.0,2010-02-13,1,Saloon,As Attached,Kia,Lekki,Lagos,CarSafe
 ID_80J2EKL,2010-02-13,2011-02-12,Female,35.0,2010-02-13,1,Saloon,As Attached,TOYOTA,Lekki,Lagos,CarSafe
 ID_LUQJ0XJ,2010-02-13,2011-02-12,Female,20.0,2010-02-13,3,JEEP,As Attached,Porsche,Lekki,Lagos,Customized Motor
 ID_ZP4DSAM,2010-02-13,2011-02-13,Male,33.0,2010-02-13,1,Saloon,As Attached,Mercedes,Ikeja,Lagos,Car Classic
@@ -170,7 +170,7 @@ ID_NF6LCGI,2010-02-14,2011-02-13,Female,63.0,2010-02-14,1,JEEP,Black,TOYOTA,Uyo,
 ID_0N6C2N6,2010-02-14,2011-02-13,Male,46.0,2010-02-14,1,Saloon,Black,Chevrolet,Uyo,Akwa-Ibom,CarSafe
 ID_KY09ZQP,2010-02-15,2011-02-14,Female,57.0,2010-02-15,1,Saloon,Black,TOYOTA,Uyo,Akwa-Ibom,Car Classic
 ID_YT06SPD,2010-02-15,2011-02-14,Female,53.0,2010-02-15,1,JEEP,Silver,TOYOTA,Ikeja,Lagos,Car Classic
-ID_LR078GT,2010-02-15,2010-12-31,Other,20.0,2010-02-15,3,Saloon,As Attached,TOYOTA,Ilorin,Kwara,CVTP
+ID_LR078GT,2010-02-15,2010-12-31,Entity,20.0,2010-02-15,3,Saloon,As Attached,TOYOTA,Ilorin,Kwara,CVTP
 ID_IACQ01W,2010-02-15,2011-02-14,Male,32.0,2010-02-15,1,Saloon,Black,TOYOTA,Lagos Island,Lagos,CarSafe
 ID_SHVHR79,2010-02-15,2011-02-14,Male,47.0,2010-02-15,1,Saloon,Black,TOYOTA,Lagos Island,Lagos,Car Classic
 ID_ZWQRL8L,2010-02-16,2011-02-15,Male,44.0,2010-02-16,2,Saloon,Black,Nissan,Aba North,Aba-North,Car Classic
@@ -232,7 +232,7 @@ ID_K9M4ZKV,2010-03-07,2011-03-06,Male,1.0,2010-03-07,1,Saloon,Red,Mack,Victoria 
 ID_1A892BZ,2010-03-07,2011-03-06,Male,60.0,2010-03-07,3,Saloon,As Attached,TOYOTA,Abuja Municipal,Abuja-Municipal,Car Classic
 ID_RLC0GHX,2010-03-07,2011-03-05,Male,30.0,2010-03-07,1,Saloon,Silver,TOYOTA,Abuja Municipal,Abuja-Municipal,Car Classic
 ID_44JR273,2010-03-07,2011-03-06,Male,46.0,2010-03-07,1,Saloon,Gold,Mercedes,Abuja Municipal,Abuja-Municipal,CarSafe
-ID_EU3CYTV,2010-03-07,2011-03-05,Other,58.0,2010-03-07,2,JEEP,Gold,Lexus,Abuja Municipal,Abuja-Municipal,Car Classic
+ID_EU3CYTV,2010-03-07,2011-03-05,Joint Gender,58.0,2010-03-07,2,JEEP,Gold,Lexus,Abuja Municipal,Abuja-Municipal,Car Classic
 ID_SLCTEAC,2010-03-07,2011-03-06,Male,27.0,2010-03-07,1,Saloon,Gold,Mercedes,Abuja,Abuja,Car Classic
 ID_SGF57PD,2010-03-07,2011-03-06,Male,43.0,2010-03-07,1,Saloon,Gold,TOYOTA,Ipaja,Lagos,Car Classic
 ID_XN8LPEF,2010-03-08,2011-03-07,Female,60.0,2010-03-08,1,Saloon,Black,TOYOTA,Lagos Island,Lagos,Car Classic
@@ -275,7 +275,7 @@ ID_V5WTV0U,2010-03-20,2011-03-19,Male,31.0,2010-03-20,1,Saloon,Black,TOYOTA,Alim
 ID_K8HSVDW,2010-03-22,2011-03-21,Female,39.0,2010-03-22,1,Saloon,Green,TOYOTA,Alimosho,Lagos,Car Classic
 ID_BI611IJ,2010-03-22,2011-03-21,Male,50.0,2010-03-22,1,Saloon,Black,Mercedes,Lagos,Lagos,CarSafe
 ID_PAPAJC4,2010-03-22,2011-03-21,Female,38.0,2010-03-22,1,Saloon,Black,TOYOTA,Lagos,Lagos,Car Classic
-ID_I6X9J8G,2010-03-22,2011-03-21,Other,41.0,2010-03-22,2,Saloon,Black,Hyundai,Lagos,Lagos,Car Classic
+ID_I6X9J8G,2010-03-22,2011-03-21,Entity,41.0,2010-03-22,2,Saloon,Black,Hyundai,Lagos,Lagos,Car Classic
 ID_9109CJ3,2010-03-23,2011-03-22,Female,45.0,2010-03-23,1,Saloon,Black,TOYOTA,Eti-Osa,Eti-Osa,CarSafe
 ID_SQA65PJ,2010-03-23,2011-03-22,Female,56.0,2010-03-23,1,Saloon,Black,Kia,Eti-Osa,Eti-Osa,Car Classic
 ID_YAOQCIC,2010-03-24,2011-03-23,Female,58.0,2010-03-24,1,Saloon,Black,Mercedes,Eti-Osa,Eti-Osa,Car Classic
@@ -291,7 +291,7 @@ ID_FBZX5BP,2010-03-26,2011-03-25,Male,40.0,2010-03-26,1,JEEP,Black,Lexus,Alimosh
 ID_T5UAAOF,2010-03-27,2011-03-26,Male,41.0,2010-03-27,1,Saloon,Grey,TOYOTA,Victoria Island,Lagos,Customized Motor
 ID_ASDEP72,2010-03-27,2011-03-25,Male,31.0,2010-03-27,1,JEEP,Brown,TOYOTA,Oshodi-Isolo,Oshodi-Isolo,CarSafe
 ID_8UIW64K,2010-03-27,2011-03-26,Male,37.0,2010-03-27,1,Saloon,Brown,TOYOTA,Oshodi-Isolo,Oshodi-Isolo,CarSafe
-ID_X4ICIN4,2010-03-27,2011-03-26,Other,48.0,2010-03-27,2,Saloon,Brown,TOYOTA,Oshodi-Isolo,Oshodi-Isolo,CarSafe
+ID_X4ICIN4,2010-03-27,2011-03-26,Joint Gender,48.0,2010-03-27,2,Saloon,Brown,TOYOTA,Oshodi-Isolo,Oshodi-Isolo,CarSafe
 ID_9EE2IJX,2010-03-27,2011-03-26,Male,48.0,2010-03-27,1,JEEP,Brown,Mercedes,Oshodi-Isolo,Oshodi-Isolo,Customized Motor
 ID_BSHOKGG,2010-03-27,2011-02-11,Male,36.0,2010-03-27,1,Saloon,Grey,TOYOTA,Ajah,Lagos,Car Classic
 ID_W9SH4CD,2010-03-27,2011-03-08,Male,33.0,2010-03-27,1,Saloon,Silver,TOYOTA,Asaba,Delta,Car Classic
@@ -308,7 +308,7 @@ ID_RJXMGCH,2010-03-29,2011-03-28,Female,38.0,2010-03-29,1,JEEP,Green,Honda,Ibeju
 ID_TLUQ0JG,2010-03-29,2011-03-13,Male,27.0,2010-03-29,1,Saloon,Blue,TOYOTA,Ibeju/Lekki,Ibeju-Lekki,Car Classic
 ID_LH72BPZ,2010-03-29,2011-01-03,Male,37.0,2010-03-29,1,JEEP,Black,Honda,Ibeju/Lekki,Ibeju-Lekki,Car Classic
 ID_OV7UMDR,2010-04-01,2011-03-31,Female,75.0,2010-04-01,1,JEEP,Ash,TOYOTA,Lagos Island,Lagos,Car Classic
-ID_Q01Z9UC,2010-04-01,2010-12-31,Other,41.0,2010-04-01,2,Saloon,As Attached,Honda,Lagos Island,Lagos,Car Classic
+ID_Q01Z9UC,2010-04-01,2010-12-31,Entity,41.0,2010-04-01,2,Saloon,As Attached,Honda,Lagos Island,Lagos,Car Classic
 ID_UM41ZMN,2010-04-01,2011-03-31,Female,30.0,2010-04-01,1,Saloon,Silver,TOYOTA,Port Harcourt,Rivers,Car Classic
 ID_JXR2E4M,2010-04-01,2011-03-31,Male,33.0,2010-04-01,1,Saloon,Silver,TOYOTA,Shomolu,Benue,Car Plus
 ID_CC1G80E,2010-04-01,2011-03-31,Male,34.0,2010-04-01,1,JEEP,Black,TOYOTA,Shomolu,Benue,Car Classic
@@ -338,7 +338,7 @@ ID_9S4N8ZN,2010-04-05,2011-04-04,Female,36.0,2010-04-05,1,Saloon,Black,Mercedes,
 ID_7MB3CWX,2010-04-06,2011-04-05,Male,40.0,2010-04-06,1,Saloon,Black,TOYOTA,Lagos Mainland,Lagos,CarSafe
 ID_1BHINKZ,2010-04-06,2011-04-05,Female,38.0,2010-04-06,1,JEEP,As Attached,TOYOTA,Lagos Island,Lagos,Car Classic
 ID_43AGYEM,2010-04-06,2011-04-05,Female,31.0,2010-04-06,1,Saloon,Red,TOYOTA,Lagos Island,Lagos,Car Classic
-ID_9EM97L6,2010-04-07,2011-04-06,Other,41.0,2010-04-07,3,JEEP,White,TOYOTA,Lagos Island,Lagos,CVTP
+ID_9EM97L6,2010-04-07,2011-04-06,Entity,41.0,2010-04-07,3,JEEP,White,TOYOTA,Lagos Island,Lagos,CVTP
 ID_AVEQQ82,2010-04-08,2011-04-01,Male,41.0,2010-04-08,1,JEEP,Silver,Mercedes,Alimosho,Lagos,Car Plus
 ID_ETO0XED,2010-04-08,2011-04-07,Female,44.0,2010-04-08,1,Saloon,Silver,Chevrolet,Lagos Island,Lagos,Car Classic
 ID_82ZMS27,2010-04-08,2011-04-07,Male,31.0,2010-04-08,1,Saloon,Black,TOYOTA,Agege,Lagos,CarSafe
@@ -373,7 +373,7 @@ ID_TACO70R,2010-04-12,2011-04-11,Male,41.0,2010-04-12,1,Saloon,Black,Honda,Biase
 ID_EFTGV9S,2010-04-12,2011-04-11,Female,40.0,2010-04-12,1,Saloon,Black,Nissan,Biase,Benue,Car Classic
 ID_5ZETLRN,2010-04-12,2011-01-07,Male,52.0,2010-04-12,1,JEEP,Black,TOYOTA,Lagos,Lagos,Car Classic
 ID_3PSQ5Y1,2010-04-15,2011-04-14,Female,42.0,2010-04-15,1,Saloon,Grey,TOYOTA,Ojodu,Lagos,Car Classic
-ID_FMH6NOV,2010-04-15,2011-04-13,Other,20.0,2010-04-15,1,Saloon,Black,TOYOTA,Ojodu,Lagos,Car Classic
+ID_FMH6NOV,2010-04-15,2011-04-13,Joint Gender,20.0,2010-04-15,1,Saloon,Black,TOYOTA,Ojodu,Lagos,Car Classic
 ID_TXRI06W,2010-04-15,2011-04-14,Male,47.0,2010-04-15,1,Saloon,Black,Mercedes,Victoria Island,Lagos,Car Classic
 ID_AMDNLXG,2010-04-15,2011-02-21,Male,44.0,2010-04-15,1,Saloon,Black,Mercedes,Eti-Osa,Eti-Osa,Car Classic
 ID_8ZSID4U,2010-04-16,2011-04-15,Male,37.0,2010-04-16,1,Saloon,Black,TOYOTA,Abuja Municipal,Abuja-Municipal,Car Classic
@@ -414,7 +414,7 @@ ID_MMMJKTK,2010-04-25,2011-04-24,Male,43.0,2010-04-25,1,Saloon,Black,Chevrolet,L
 ID_NO2EVRS,2010-04-25,2011-04-24,Female,6.0,2010-04-25,1,Mini Bus,Black,TOYOTA,Lagos Mainland,Lagos,Car Classic
 ID_GHOSEJL,2010-04-26,2011-04-25,Male,46.0,2010-04-26,1,Saloon,Blue,TOYOTA,Victoria Island,Lagos,Car Classic
 ID_XNCKV04,2010-04-26,2011-04-25,Female,30.0,2010-04-26,1,Saloon,Silver,Honda,Victoria Island,Lagos,Car Classic
-ID_OWGNP5G,2010-04-26,2011-04-25,Other,41.0,2010-04-26,1,Saloon,Grey,TOYOTA,Oguta,Imo,CarSafe
+ID_OWGNP5G,2010-04-26,2011-04-25,Joint Gender,41.0,2010-04-26,1,Saloon,Grey,TOYOTA,Oguta,Imo,CarSafe
 ID_EK6CXV3,2010-04-26,2011-01-01,Male,48.0,2010-04-26,1,JEEP,Grey,TOYOTA,Oguta,Imo,Customized Motor
 ID_RA1JUV0,2010-04-26,2011-04-25,Male,41.0,2010-04-26,1,Saloon,Grey,TOYOTA,Ikeja,Lagos,Car Classic
 ID_44XEX1S,2010-04-27,2011-04-26,Male,44.0,2010-04-27,1,Saloon,Grey,TOYOTA,Ikeja,Lagos,Car Classic
@@ -451,7 +451,7 @@ ID_VTWLQ73,2010-05-10,2011-05-09,Male,30.0,2010-05-10,1,Saloon,Silver,Hyundai,Le
 ID_IQXFG3D,2010-05-10,2011-05-08,Male,67.0,2010-05-10,2,Saloon,Silver,Ford,Lekki,Lagos,Car Classic
 ID_SVWH1CR,2010-05-10,2011-05-09,Male,27.0,2010-05-10,1,Saloon,Silver,TOYOTA,Abuja Municipal,Abuja-Municipal,Car Classic
 ID_CHQ2Q0I,2010-05-10,2011-05-09,Female,46.0,2010-05-10,1,Saloon,Black,TOYOTA,Abuja Municipal,Abuja-Municipal,CarSafe
-ID_MU3N61S,2010-05-10,2011-05-09,Other,50.0,2010-05-10,1,Saloon,Black,Ford,Abuja Municipal,Abuja-Municipal,CarSafe
+ID_MU3N61S,2010-05-10,2011-05-09,Joint Gender,50.0,2010-05-10,1,Saloon,Black,Ford,Abuja Municipal,Abuja-Municipal,CarSafe
 ID_OFA9XWW,2010-05-11,2011-05-10,Male,2.0,2010-05-11,1,Saloon,Black,Ford,Surulere,Lagos,CarSafe
 ID_RY4OMUC,2010-05-12,2011-05-11,Male,35.0,2010-05-12,2,JEEP,Black,Honda,Surulere,Lagos,Car Classic
 ID_TS9Q183,2010-05-13,2011-05-12,Male,42.0,2010-05-13,1,Saloon,White,TOYOTA,Ikeja,Lagos,CarSafe
@@ -466,14 +466,14 @@ ID_AUCNYLV,2010-05-15,2011-05-14,Male,46.0,2010-05-15,1,Saloon,As Attached,TOYOT
 ID_GO3Q71U,2010-05-16,2011-05-15,Male,33.0,2010-05-16,1,Saloon,As Attached,TOYOTA,Victoria Island,Lagos,CarSafe
 ID_2H2K4QE,2010-05-16,2011-05-15,Female,33.0,2010-05-16,1,Saloon,As Attached,Mercedes,Victoria Island,Lagos,CarSafe
 ID_PO2L1TY,2010-05-16,2011-05-15,Male,36.0,2010-05-16,1,Saloon,As Attached,TOYOTA,Victoria Island,Lagos,CarSafe
-ID_LKLWWJ0,2010-05-16,2011-05-15,Other,41.0,2010-05-16,2,Saloon,As Attached,TOYOTA,Victoria Island,Lagos,CVTP
+ID_LKLWWJ0,2010-05-16,2011-05-15,Entity,41.0,2010-05-16,2,Saloon,As Attached,TOYOTA,Victoria Island,Lagos,CVTP
 ID_Z1I0RKO,2010-05-17,2011-05-16,Male,35.0,2010-05-17,1,Saloon,Silver,TOYOTA,Victoria Island,Lagos,Car Plus
 ID_96R43NJ,2010-05-17,2011-05-16,Female,27.0,2010-05-17,1,JEEP,Black,Hyundai,Victoria Island,Lagos,Car Classic
 ID_JUO7R24,2010-05-17,2011-05-16,Female,30.0,2010-05-17,1,Saloon,As Attached,TOYOTA,Abuja,Abuja,CVTP
 ID_86XSH2I,2010-05-17,2011-05-16,Male,40.0,2010-05-17,3,Saloon,Grey,BMW,Ikeja,Lagos,Car Plus
 ID_HN3AIDL,2010-05-18,2011-05-17,Male,2.0,2010-05-18,1,Saloon,Silver,Hyundai,Lagos,Lagos,CarSafe
 ID_5B6V98F,2010-05-19,2011-05-18,Female,35.0,2010-05-19,1,JEEP,Silver,Nissan,Lagos,Lagos,Car Classic
-ID_801WUDB,2010-05-19,2011-05-18,Other,20.0,2010-05-19,2,JEEP,Black,Ford,Lagos,Lagos,Customized Motor
+ID_801WUDB,2010-05-19,2011-05-18,Joint Gender,20.0,2010-05-19,2,JEEP,Black,Ford,Lagos,Lagos,Customized Motor
 ID_CIXNIAP,2010-05-20,2011-05-18,Male,61.0,2010-05-20,1,Saloon,Black,Nissan,Ifo,Benue,CarSafe
 ID_6W55QIO,2010-05-21,2011-05-20,Male,50.0,2010-05-21,1,JEEP,Black,TOYOTA,Victoria Island,Lagos,Car Classic
 ID_JAJ446Q,2010-05-21,2011-05-20,Female,49.0,2010-05-21,1,JEEP,Black,TOYOTA,Port Harcourt,Rivers,Car Classic
@@ -498,7 +498,7 @@ ID_JB4GQOF,2010-05-27,2011-05-26,Male,1.0,2010-05-27,1,Saloon,Black,TOYOTA,Apapa
 ID_3OH4H7Z,2010-05-28,2011-05-27,Female,40.0,2010-05-28,1,Saloon,Black,TOYOTA,Apapa,Lagos,CarSafe
 ID_N67PMQ5,2010-05-28,2011-05-27,Male,35.0,2010-05-28,1,Saloon,Black,Lexus,Apapa,Lagos,CarSafe
 ID_JHSAFG8,2010-05-28,2011-05-27,Male,35.0,2010-05-28,1,Saloon,Black,Hyundai,Apapa,Lagos,Car Plus
-ID_XUVJTCR,2010-05-28,2011-05-27,Other,39.0,2010-05-28,1,Saloon,Black,Hyundai,Apapa,Lagos,Car Plus
+ID_XUVJTCR,2010-05-28,2011-05-27,Entity,39.0,2010-05-28,1,Saloon,Black,Hyundai,Apapa,Lagos,Car Plus
 ID_ILUC79K,2010-05-28,2011-05-27,Female,50.0,2010-05-28,1,JEEP,Black,Hyundai,Apapa,Lagos,Car Classic
 ID_CMRTJBR,2010-05-28,2011-05-21,Male,39.0,2010-05-28,2,Saloon,Black,Kia,Abuja,Abuja,Car Classic
 ID_SEVUS4D,2010-05-30,2011-05-29,Male,45.0,2010-05-30,1,JEEP,Wine,Land Rover,Kosofe,Benue,Car Classic
@@ -513,7 +513,7 @@ ID_HC6CJ3B,2010-05-31,2011-06-16,Female,45.0,2010-05-31,1,JEEP,Black,TOYOTA,Abuj
 ID_543T4OB,2010-05-31,2011-05-30,Female,35.0,2010-05-31,1,Saloon,Grey,TOYOTA,Abuja Municipal,Abuja-Municipal,CarSafe
 ID_EV2OKWR,2010-05-31,2011-05-30,Male,48.0,2010-05-31,1,Saloon,Grey,TOYOTA,Abuja Municipal,Abuja-Municipal,CarSafe
 ID_OT1CQFC,2010-05-31,2011-05-30,Male,27.0,2010-05-31,1,Saloon,Grey,TOYOTA,Lagos Island,Lagos,Car Classic
-ID_PYKBUGL,2010-06-01,2011-05-31,Other,93.0,2010-06-01,7,Truck,Blue,Subaru,Lagos Island,Lagos,CVTP
+ID_PYKBUGL,2010-06-01,2011-05-31,Entity,93.0,2010-06-01,7,Truck,Blue,Subaru,Lagos Island,Lagos,CVTP
 ID_6E7U3J2,2010-06-01,2011-05-31,Male,75.0,2010-06-01,2,JEEP,Blue,Subaru,Ikeja,Lagos,Car Classic
 ID_XBNWCHQ,2010-06-03,2011-06-02,Male,40.0,2010-06-03,1,Saloon,Black,Honda,Ikeja,Lagos,CarSafe
 ID_1GORHQO,2010-06-03,2011-06-02,Female,32.0,2010-06-03,1,Saloon,Black,TOYOTA,Ikeja,Lagos,Car Classic
@@ -546,8 +546,8 @@ ID_74DW007,2010-06-13,2011-06-11,Male,36.0,2010-06-13,1,Saloon,Grey,Volkswagen,L
 ID_3I0E5SI,2010-06-14,2011-06-13,Male,50.0,2010-06-14,1,Saloon,Grey,TOYOTA,Lagos Mainland,Lagos,Car Classic
 ID_9QGR23A,2010-06-14,2011-06-13,Male,1.0,2010-06-14,1,Saloon,Grey,Volkswagen,Victoria Island,Lagos,CarSafe
 ID_GMR61I5,2010-06-14,2011-06-13,Female,32.0,2010-06-14,1,Saloon,Grey,TOYOTA,Victoria Island,Lagos,Car Classic
-ID_XJSMG9Q,2010-06-14,2011-06-13,Other,42.0,2010-06-14,1,Truck,As Attached,Iveco,Victoria Island,Lagos,CVTP
-ID_QA8BAYC,2010-06-15,2011-03-31,Other,64.0,2010-06-15,2,Saloon,Green,Lexus,Ikeja,Lagos,Car Classic
+ID_XJSMG9Q,2010-06-14,2011-06-13,Entity,42.0,2010-06-14,1,Truck,As Attached,Iveco,Victoria Island,Lagos,CVTP
+ID_QA8BAYC,2010-06-15,2011-03-31,Joint Gender,64.0,2010-06-15,2,Saloon,Green,Lexus,Ikeja,Lagos,Car Classic
 ID_QASAINF,2010-06-16,2011-02-02,Male,40.0,2010-06-16,1,Saloon,Green,TOYOTA,Lagos Island,Lagos,Car Classic
 ID_EO94TQW,2010-06-17,2011-02-22,Male,51.0,2010-06-17,1,JEEP,Black,TOYOTA,Eti-Osa,Eti-Osa,Car Classic
 ID_LE5QNZZ,2010-06-17,2011-06-16,Female,26.0,2010-06-17,3,JEEP,Wine,TOYOTA,Lekki,Lagos,Car Classic
@@ -646,7 +646,7 @@ ID_FAAPJXY,2010-07-08,2011-07-07,Male,25.0,2010-07-08,1,Saloon,Black,Kia,Victori
 ID_LLKM6LS,2010-07-08,2011-07-07,Male,29.0,2010-07-08,1,Saloon,Silver,TOYOTA,Victoria Island,Lagos,Car Classic
 ID_65F160A,2010-07-08,2011-07-07,Male,30.0,2010-07-08,1,Saloon,As Attached,Honda,Victoria Island,Lagos,CarSafe
 ID_YACRH79,2010-07-08,2011-07-07,Male,49.0,2010-07-08,1,JEEP,As Attached,BMW,Victoria Island,Lagos,Car Classic
-ID_3CFOCEH,2010-07-09,2011-07-08,Other,41.0,2010-07-09,1,JEEP,As Attached,Ford,Victoria Island,Lagos,Car Classic
+ID_3CFOCEH,2010-07-09,2011-07-08,Entity,41.0,2010-07-09,1,JEEP,As Attached,Ford,Victoria Island,Lagos,Car Classic
 ID_L3X62M8,2010-07-09,2011-07-08,Male,30.0,2010-07-09,1,Saloon,Silver,TOYOTA,Ikeja,Lagos,CarSafe
 ID_DTW1LHO,2010-07-10,2011-07-09,Male,50.0,2010-07-10,1,Saloon,Silver,TOYOTA,Ikeja,Lagos,CarSafe
 ID_78CCJ1W,2010-07-11,2011-01-22,Male,48.0,2010-07-11,1,JEEP,Silver,Mercedes,Ikeja,Lagos,Car Classic
@@ -696,10 +696,10 @@ ID_TDAOXRT,2010-07-23,2011-07-22,Male,32.0,2010-07-23,1,Saloon,Ash,TOYOTA,Lekki,
 ID_NHDN6RU,2010-07-23,2011-07-22,Male,61.0,2010-07-23,1,Saloon,Ash,TOYOTA,Ogbmosho South,Ogbmosho-South,Car Classic
 ID_8BGO1Y3,2010-07-24,2011-07-23,Male,40.0,2010-07-24,1,Saloon,Grey,TOYOTA,Lagos Island,Lagos,CarSafe
 ID_5TRKUIB,2010-07-24,2011-07-23,Male,31.0,2010-07-24,1,Saloon,Grey,Honda,Lagos Island,Lagos,Car Classic
-ID_NCV2NG0,2010-07-24,2011-07-23,Other,47.0,2010-07-24,2,JEEP,Grey,Mercedes,Lagos Island,Lagos,Customized Motor
+ID_NCV2NG0,2010-07-24,2011-07-23,Joint Gender,47.0,2010-07-24,2,JEEP,Grey,Mercedes,Lagos Island,Lagos,Customized Motor
 ID_IS4CA9K,2010-07-25,2011-07-24,Female,32.0,2010-07-25,1,Saloon,Gold,TOYOTA,Lagos Island,Lagos,Car Classic
 ID_TU49J9J,2010-07-25,2011-01-22,Male,20.0,2010-07-25,2,JEEP,Blue,TOYOTA,Lagos Island,Lagos,Customized Motor
-ID_7L11AQF,2010-07-25,2011-07-24,Other,53.0,2010-07-25,2,Saloon,Blue,Peugeot,Ebute-Metta,Lagos,Car Classic
+ID_7L11AQF,2010-07-25,2011-07-24,Joint Gender,53.0,2010-07-25,2,Saloon,Blue,Peugeot,Ebute-Metta,Lagos,Car Classic
 ID_J9805PG,2010-07-25,2011-07-24,Male,68.0,2010-07-25,2,Saloon,Black,TOYOTA,Ojo,Benue,Car Classic
 ID_4KSURGT,2010-07-26,2011-07-25,Male,57.0,2010-07-26,1,Saloon,As Attached,Lexus,Alimosho,Lagos,CarSafe
 ID_N8CGZC0,2010-07-26,2011-07-25,Female,30.0,2010-07-26,1,Saloon,Gold,Hyundai,Alimosho,Lagos,Car Classic
@@ -715,13 +715,13 @@ ID_48Y2QMS,2010-07-29,2011-07-28,Male,68.0,2010-07-29,1,Saloon,As Attached,Ford,
 ID_VL9DKGT,2010-07-29,2011-07-28,Male,41.0,2010-07-29,2,Saloon,As Attached,Mercedes,Lekki,Lagos,Car Classic
 ID_1RR0Y6C,2010-07-29,2011-07-28,Male,37.0,2010-07-29,1,Saloon,As Attached,TOYOTA,Ibadan North West,Ibadan-West,Car Classic
 ID_H3O8ESH,2010-07-30,2011-07-14,Male,24.0,2010-07-30,1,JEEP,As Attached,TOYOTA,Ibadan North West,Ibadan-West,Car Classic
-ID_3OA0G45,2010-07-30,2011-07-29,Other,35.0,2010-07-30,3,JEEP,As Attached,TOYOTA,Ibadan North West,Ibadan-West,Car Classic
+ID_3OA0G45,2010-07-30,2011-07-29,Joint Gender,35.0,2010-07-30,3,JEEP,As Attached,TOYOTA,Ibadan North West,Ibadan-West,Car Classic
 ID_OBO9KL0,2010-07-31,2011-07-30,Male,43.0,2010-07-31,2,Saloon,Black,TOYOTA,Victoria Island,Lagos,CarSafe
 ID_NFP021S,2010-07-31,2011-07-30,Male,12.0,2010-07-31,2,JEEP,Green,Mercedes,Lekki,Lagos,Customized Motor
 ID_JSQQTB6,2010-07-31,2011-01-26,Male,40.0,2010-07-31,2,Saloon,Green,Volvo,Nnewi North,Nnewi-North,Car Classic
 ID_XNW3NY5,2010-07-31,2011-07-30,Female,46.0,2010-07-31,1,Saloon,Green,Volvo,GBAGADA,Benue,Car Classic
 ID_HTJAVBF,2010-07-31,2011-07-30,Male,12.0,2010-07-31,2,Saloon,Black,Lexus,Lekki,Lagos,Customized Motor
-ID_18YKWD3,2010-08-01,2010-12-31,Other,38.0,2010-08-01,2,Saloon,Black,Volkswagen,Ibadan North West,Ibadan-West,Car Classic
+ID_18YKWD3,2010-08-01,2010-12-31,Joint Gender,38.0,2010-08-01,2,Saloon,Black,Volkswagen,Ibadan North West,Ibadan-West,Car Classic
 ID_HU1P4RZ,2010-08-02,2011-08-01,Male,63.0,2010-08-02,2,JEEP,As Attached,TOYOTA,Ibadan North West,Ibadan-West,CarSafe
 ID_E5K0Z0O,2010-08-02,2011-08-01,Male,41.0,2010-08-02,1,JEEP,As Attached,TOYOTA,Ibadan North West,Ibadan-West,Customized Motor
 ID_YPLHCLL,2010-08-03,2011-08-02,Male,50.0,2010-08-03,1,Saloon,Black,Lexus,OGUN,Ogun,Car Classic
@@ -734,7 +734,7 @@ ID_G7NFBU0,2010-08-06,2011-02-05,Male,37.0,2010-08-06,1,Saloon,Red,Lexus,Ikeja,L
 ID_QRU9JI4,2010-08-06,2011-08-05,Female,30.0,2010-08-06,1,Saloon,Red,Lexus,Ikeja,Lagos,CarSafe
 ID_7L5CZWD,2010-08-08,2011-08-07,Female,30.0,2010-08-08,1,Saloon,Red,Lexus,Ikeja,Lagos,CarSafe
 ID_IJED73A,2010-08-08,2011-08-07,Male,48.0,2010-08-08,1,Saloon,Red,Lexus,Ikeja,Lagos,CarSafe
-ID_F0J5UNE,2010-08-08,2011-04-29,Other,20.0,2010-08-08,2,Saloon,Red,DAF,Lagos,Lagos,CVTP
+ID_F0J5UNE,2010-08-08,2011-04-29,Entity,20.0,2010-08-08,2,Saloon,Red,DAF,Lagos,Lagos,CVTP
 ID_6K3O0LW,2010-08-08,2011-08-07,Female,46.0,2010-08-08,1,Saloon,Red Maroon,Honda,Abuja Municipal,Abuja-Municipal,CarSafe
 ID_EQHFGWJ,2010-08-09,2011-08-08,Male,35.0,2010-08-09,1,Saloon,Red Maroon,TOYOTA,Ikeja,Lagos,CarSafe
 ID_WIB6A1C,2010-08-09,2011-08-08,Male,53.0,2010-08-09,1,Saloon,Red Maroon,TOYOTA,Ikeja,Lagos,CarSafe
@@ -746,7 +746,7 @@ ID_7DJ6GXA,2010-08-11,2011-08-09,Male,41.0,2010-08-11,1,Saloon,White,TOYOTA,GBAG
 ID_MRXPZ3I,2010-08-14,2011-08-13,Other,20.0,2010-08-14,3,Saloon,White,TOYOTA,GBAGADA,Benue,Car Classic
 ID_EHBR3WQ,2010-08-14,2011-08-13,Male,63.0,2010-08-14,1,JEEP,White,TOYOTA,Victoria Island,Lagos,CarSafe
 ID_RCRAENR,2010-08-14,2011-01-06,Other,32.0,2010-08-14,1,JEEP,White,TOYOTA,Victoria Island,Lagos,Car Classic
-ID_MER1ASP,2010-08-14,2011-07-29,Other,37.0,2010-08-14,3,Saloon,White,TOYOTA,Isolo,Benue,Car Classic
+ID_MER1ASP,2010-08-14,2011-07-29,Joint Gender,37.0,2010-08-14,3,Saloon,White,TOYOTA,Isolo,Benue,Car Classic
 ID_EZ76118,2010-08-14,2011-08-13,Male,50.0,2010-08-14,1,Saloon,Black,Hyundai,GBAGADA,Benue,CarSafe
 ID_BW545IP,2010-08-14,2011-02-12,Female,53.0,2010-08-14,2,Saloon,Black,Hyundai,GBAGADA,Benue,Car Classic
 ID_LO78G6B,2010-08-14,2011-08-13,Other,20.0,2010-08-14,3,JEEP,Green,TOYOTA,GBAGADA,Benue,Car Classic
@@ -830,10 +830,10 @@ ID_MSNO04Y,2010-09-10,2011-09-09,Male,32.0,2010-09-10,1,Saloon,Black,Kia,Marylan
 ID_IFD2W8N,2010-09-10,2011-09-09,Female,55.0,2010-09-10,1,Saloon,Black,Kia,Kaduna North,Kaduna-North,Car Classic
 ID_DVJFDXP,2010-09-11,2011-09-10,Male,48.0,2010-09-11,1,Saloon,Black,Kia,Kaduna North,Kaduna-North,CarSafe
 ID_7AXWSZ8,2010-09-12,2011-09-11,Female,28.0,2010-09-12,1,Saloon,Black,Ford,Kaduna North,Kaduna-North,Car Classic
-ID_C3QZT5Q,2010-09-12,2011-09-11,Other,50.0,2010-09-12,1,Saloon,Black,Ford,Kaduna North,Kaduna-North,CarSafe
+ID_C3QZT5Q,2010-09-12,2011-09-11,Joint Gender,50.0,2010-09-12,1,Saloon,Black,Ford,Kaduna North,Kaduna-North,CarSafe
 ID_B332EPW,2010-09-12,2011-08-28,Male,64.0,2010-09-12,1,JEEP,Black,Hyundai,Kaduna North,Kaduna-North,Car Classic
 ID_GVGIJ5A,2010-09-12,2011-01-05,Male,37.0,2010-09-12,2,JEEP,Black,Lexus,Ibeju/Lekki,Ibeju-Lekki,Car Classic
-ID_AQENFN0,2010-09-12,2011-09-11,Other,26.0,2010-09-12,2,Saloon,Red,Hyundai,Surulere,Lagos,Car Plus
+ID_AQENFN0,2010-09-12,2011-09-11,Entity,26.0,2010-09-12,2,Saloon,Red,Hyundai,Surulere,Lagos,Car Plus
 ID_60ZAZSF,2010-09-12,2011-09-11,Female,41.0,2010-09-12,2,JEEP,Black,Ford,Lagos Mainland,Lagos,Car Plus
 ID_M51I7X6,2010-09-13,2011-08-05,Male,44.0,2010-09-13,1,Saloon,Blue,TOYOTA,Eti-Osa,Eti-Osa,Customized Motor
 ID_OFBNQ8D,2010-09-13,2011-09-12,Female,56.0,2010-09-13,1,JEEP,Black,TOYOTA,Lagos Island,Lagos,Car Classic
@@ -859,7 +859,7 @@ ID_GBLGHOH,2010-09-19,2011-09-18,Male,1.0,2010-09-19,1,Saloon,Gold,BMW,Jibia,Ben
 ID_JHLMU91,2010-09-19,2011-09-18,Male,66.0,2010-09-19,1,Saloon,Gold,BMW,Jibia,Benue,CarSafe
 ID_F3OG44O,2010-09-19,2011-09-17,Male,54.0,2010-09-19,1,Saloon,Gold,BMW,Jibia,Benue,CarSafe
 ID_KWO4DBU,2010-09-20,2011-09-19,Male,40.0,2010-09-20,1,Saloon,Gold,BMW,Jibia,Benue,Car Classic
-ID_0Z10C2X,2010-09-20,2011-09-19,Other,20.0,2010-09-20,2,Saloon,Gold,Hyundai,Ile-Ife,Osun,CVTP
+ID_0Z10C2X,2010-09-20,2011-09-19,Entity,20.0,2010-09-20,2,Saloon,Gold,Hyundai,Ile-Ife,Osun,CVTP
 ID_VPQ0KU4,2010-09-20,2011-09-18,Female,40.0,2010-09-20,1,Saloon,Gold,TOYOTA,Victoria Island,Lagos,CarSafe
 ID_P7SI4J1,2010-09-20,2011-09-19,Male,32.0,2010-09-20,1,Saloon,Gold,TOYOTA,Victoria Island,Lagos,Car Classic
 ID_ER9JUTI,2010-09-20,2011-09-19,Male,41.0,2010-09-20,2,Saloon,Gold,TOYOTA,Victoria Island,Lagos,Car Classic
@@ -874,7 +874,7 @@ ID_0SJ3H22,2010-09-24,2011-09-23,Male,61.0,2010-09-24,1,Saloon,Black,Honda,Ikeja
 ID_VB29M9A,2010-09-24,2011-09-23,Male,33.0,2010-09-24,1,Saloon,Black,Honda,Ikeja,Lagos,CarSafe
 ID_GLQEYVC,2010-09-24,2011-09-23,Female,12.0,2010-09-24,1,Saloon,Black,Mercedes,Ikeja,Lagos,Car Classic
 ID_L54B2T4,2010-09-24,2011-09-23,Male,30.0,2010-09-24,1,Saloon,Black,Hyundai,Lagos,Lagos,CarSafe
-ID_3B2AGCH,2010-09-24,2011-09-23,Other,45.0,2010-09-24,2,Saloon,Black,Hyundai,Lagos,Lagos,Car Classic
+ID_3B2AGCH,2010-09-24,2011-09-23,Entity,45.0,2010-09-24,2,Saloon,Black,Hyundai,Lagos,Lagos,Car Classic
 ID_JOJOFW3,2010-09-24,2011-09-23,Male,34.0,2010-09-24,1,Saloon,Grey,TOYOTA,Lagos,Lagos,Car Classic
 ID_JNZUZVT,2010-09-24,2011-09-23,Male,38.0,2010-09-24,1,JEEP,Black,Kia,Lagos Mainland,Lagos,Car Classic
 ID_PJZSCZM,2010-09-24,2011-01-24,Male,36.0,2010-09-24,1,JEEP,Black,Kia,Lagos Mainland,Lagos,Car Classic
@@ -933,7 +933,7 @@ ID_LDGAPU4,2010-10-11,2011-10-10,Female,48.0,2010-10-11,2,JEEP,Black,TOYOTA,Eti-
 ID_D1X94IB,2010-10-11,2011-10-10,Female,49.0,2010-10-11,2,JEEP,Black,TOYOTA,Eti-Osa,Eti-Osa,Car Classic
 ID_Y2J431Y,2010-10-12,2011-10-10,Male,32.0,2010-10-12,1,JEEP,Red,Honda,Eti-Osa,Eti-Osa,Car Plus
 ID_9S8OYKH,2010-10-12,2011-10-11,Male,58.0,2010-10-12,1,JEEP,Red,Honda,Eti-Osa,Eti-Osa,Car Classic
-ID_113L0WC,2010-10-13,2011-10-12,Other,20.0,2010-10-13,1,JEEP,Red,Renault,Eti-Osa,Eti-Osa,Car Classic
+ID_113L0WC,2010-10-13,2011-10-12,Entity,20.0,2010-10-13,1,JEEP,Red,Renault,Eti-Osa,Eti-Osa,Car Classic
 ID_024NJLZ,2010-10-14,2011-10-13,Male,32.0,2010-10-14,1,JEEP,Red,Lexus,Kosofe,Benue,Car Classic
 ID_K9ILDHY,2010-10-14,2011-10-13,Male,31.0,2010-10-14,1,JEEP,Red,Lexus,Ifako-Ijaye ,Ifako-Ijaye,Car Classic
 ID_0YY2WTH,2010-10-14,2011-10-13,Male,36.0,2010-10-14,2,JEEP,Red,Lexus,Ifako-Ijaye ,Ifako-Ijaye,Car Classic
@@ -953,7 +953,7 @@ ID_LDKFZY9,2010-10-16,2011-10-15,Female,41.0,2010-10-16,1,JEEP,Black,Mercedes,Fe
 ID_CMYI7J5,2010-10-17,2011-10-16,Female,37.0,2010-10-17,1,JEEP,Black,Mercedes,Festac,Benue,CarSafe
 ID_UYRZV51,2010-10-17,2011-10-16,Male,41.0,2010-10-17,1,JEEP,Black,Mercedes,Festac,Benue,CarSafe
 ID_BXOR2L2,2010-10-18,2011-10-17,Male,31.0,2010-10-18,2,JEEP,Black,Mercedes,Festac,Benue,Car Classic
-ID_CMI6RQG,2010-10-18,2011-10-17,Other,12.0,2010-10-18,2,JEEP,Black,Mercedes,Lagos Island,Lagos,Car Classic
+ID_CMI6RQG,2010-10-18,2011-10-17,Entity,12.0,2010-10-18,2,JEEP,Black,Mercedes,Lagos Island,Lagos,Car Classic
 ID_JY4JQ1O,2010-10-18,2011-04-20,Male,44.0,2010-10-18,1,JEEP,Black,TOYOTA,Lagos Island,Lagos,Car Classic
 ID_D0J8CM2,2010-10-18,2011-10-14,Female,33.0,2010-10-18,1,JEEP,Silver,TOYOTA,Lagos Island,Lagos,Car Classic
 ID_LC75TUR,2010-10-19,2011-08-09,Male,46.0,2010-10-19,1,JEEP,Black,TOYOTA,Lagos Island,Lagos,Car Classic
@@ -1046,7 +1046,7 @@ ID_3ZWA47Q,2010-11-13,2011-11-12,Female,76.0,2010-11-13,1,Mini Bus,Blue,TOYOTA,A
 ID_PFFF6K5,2010-11-13,2011-10-26,Male,39.0,2010-11-13,1,Mini Bus,Blue,TOYOTA,Anthony Village,Lagos,Car Classic
 ID_IZIQY23,2010-11-13,2011-11-12,Male,50.0,2010-11-13,1,Mini Bus,Blue,TOYOTA,Anthony Village,Lagos,CarSafe
 ID_VVKHQ2N,2010-11-13,2011-11-12,Male,41.0,2010-11-13,1,Mini Bus,Blue,TOYOTA,Anthony Village,Lagos,CarSafe
-ID_TCTXSDG,2010-11-13,2011-11-11,Other,41.0,2010-11-13,1,Mini Bus,Blue,TOYOTA,Anthony Village,Lagos,Car Classic
+ID_TCTXSDG,2010-11-13,2011-11-11,Entity,41.0,2010-11-13,1,Mini Bus,Blue,TOYOTA,Anthony Village,Lagos,Car Classic
 ID_DTOCSH6,2010-11-13,2011-02-12,Male,53.0,2010-11-13,1,JEEP,Wine,TOYOTA,Lagos,Lagos,Car Classic
 ID_KPPEBQZ,2010-11-13,2011-11-12,Male,30.0,2010-11-13,1,Saloon,Gold,TOYOTA,Ajah,Lagos,Car Classic
 ID_OMV3OQD,2010-11-13,2011-11-12,Female,38.0,2010-11-13,1,Saloon,Green,TOYOTA,Abuja Municipal,Abuja-Municipal,Car Classic
@@ -1096,7 +1096,7 @@ ID_D1A2Y4C,2010-11-29,2011-11-28,Other,31.0,2010-11-29,1,Saloon,Green,TOYOTA,Kos
 ID_MWCDXKL,2010-11-29,2011-11-28,Male,41.0,2010-11-29,1,Saloon,Green,TOYOTA,Kosofe,Benue,Car Classic
 ID_T3GTDFP,2010-11-29,2011-11-28,Male,37.0,2010-11-29,1,Saloon,Gold,Honda,Kosofe,Benue,Car Classic
 ID_EUO56DS,2010-11-29,2011-11-28,Female,37.0,2010-11-29,1,JEEP,Black,Kia,Victoria Island,Lagos,Car Classic
-ID_JGUAT9Z,2010-11-30,2011-11-29,Other,20.0,2010-11-30,1,JEEP,Black,Kia,Lagos Island,Lagos,Car Classic
+ID_JGUAT9Z,2010-11-30,2011-11-29,Entity,20.0,2010-11-30,1,JEEP,Black,Kia,Lagos Island,Lagos,Car Classic
 ID_NYWSHLR,2010-11-30,2011-11-29,Male,43.0,2010-11-30,1,JEEP,Black,Honda,Victoria Island,Lagos,Car Classic
 ID_MHZVHEM,2010-12-02,2011-12-01,Male,38.0,2010-12-02,1,Saloon,Grey,TOYOTA,Eti-Osa,Eti-Osa,CarSafe
 ID_EA0143K,2010-12-02,2011-12-01,Male,37.0,2010-12-02,1,Saloon,Grey,TOYOTA,Eti-Osa,Eti-Osa,Car Classic
@@ -1113,13 +1113,13 @@ ID_K8TDISV,2010-12-04,2011-12-03,Female,41.0,2010-12-04,1,JEEP,Black,TOYOTA,Vict
 ID_UOBWYR7,2010-12-05,2011-12-04,Male,35.0,2010-12-05,2,JEEP,Black,TOYOTA,Lagos Mainland,Lagos,Car Classic
 ID_ZTTHC5X,2010-12-05,2011-12-04,Male,67.0,2010-12-05,2,JEEP,Black,TOYOTA,Victoria Island,Lagos,Car Classic
 ID_YBBBY9D,2010-12-05,2011-12-04,Male,29.0,2010-12-05,1,Saloon,Wine,TOYOTA,Obia/Akpor,Obia-Akpor,Car Plus
-ID_SZJ490Y,2010-12-05,2011-06-16,Other,30.0,2010-12-05,1,JEEP,Black,Ford,Obia/Akpor,Obia-Akpor,Car Classic
+ID_SZJ490Y,2010-12-05,2011-06-16,Joint Gender,30.0,2010-12-05,1,JEEP,Black,Ford,Obia/Akpor,Obia-Akpor,Car Classic
 ID_0HZ0SGK,2010-12-05,2011-12-04,Male,36.0,2010-12-05,1,JEEP,Black,Ford,Obia/Akpor,Obia-Akpor,Car Classic
 ID_QGKRZXE,2010-12-05,2011-12-04,Female,50.0,2010-12-05,1,Saloon,Black,Honda,Ibadan North,Ibadan-North,CarSafe
 ID_P9J945Y,2010-12-05,2011-12-04,Female,50.0,2010-12-05,1,Saloon,Black,Honda,Ibadan North,Ibadan-North,CarSafe
 ID_4AN1ETY,2010-12-06,2011-12-05,Male,28.0,2010-12-06,1,Saloon,Black,Honda,Agege,Lagos,CarSafe
 ID_6NH3AX4,2010-12-06,2011-12-05,Male,35.0,2010-12-06,1,Saloon,Black,Honda,Victoria Island,Lagos,CarSafe
-ID_S64LS13,2010-12-06,2011-03-03,Other,5.0,2010-12-06,1,Truck,Black,Iveco,Victoria Island,Lagos,CVTP
+ID_S64LS13,2010-12-06,2011-03-03,Entity,5.0,2010-12-06,1,Truck,Black,Iveco,Victoria Island,Lagos,CVTP
 ID_TIPN93T,2010-12-06,2011-12-05,Male,52.0,2010-12-06,2,JEEP,Black,Honda,Victoria Island,Lagos,Car Plus
 ID_UPRTSMO,2010-12-06,2011-12-05,Female,31.0,2010-12-06,1,JEEP,Black,Honda,Warri Central,Warri-Central,CarSafe
 ID_34KLMJ7,2010-12-07,2011-12-06,Male,41.0,2010-12-07,1,JEEP,Black,Honda,Warri Central,Warri-Central,CarSafe
@@ -1130,7 +1130,7 @@ ID_IOE1WNR,2010-12-09,2011-03-08,Male,41.0,2010-12-09,1,Saloon,Red,Nissan,Lagos 
 ID_G3YR6WI,2010-12-09,2011-12-08,Female,40.0,2010-12-09,2,JEEP,As Attached,Hyundai,Abuja Municipal,Abuja-Municipal,Car Classic
 ID_B9UGW0D,2010-12-10,2011-12-09,Male,41.0,2010-12-10,1,JEEP,As Attached,Hyundai,Ikeja,Lagos,CarSafe
 ID_AR1SMSP,2010-12-10,2011-12-09,Male,38.0,2010-12-10,1,JEEP,As Attached,Hyundai,Ikeja,Lagos,Car Classic
-ID_GW4JPM5,2010-12-11,2011-12-10,Other,7.0,2010-12-11,2,JEEP,As Attached,Hyundai,Abuja Municipal,Abuja-Municipal,Car Classic
+ID_GW4JPM5,2010-12-11,2011-12-10,Entity,7.0,2010-12-11,2,JEEP,As Attached,Hyundai,Abuja Municipal,Abuja-Municipal,Car Classic
 ID_D8GN1Y7,2010-12-11,2011-12-10,Male,44.0,2010-12-11,1,JEEP,Grey,Lexus,Abuja,Abuja,CarSafe
 ID_1WLRCU0,2010-12-11,2011-12-10,Female,60.0,2010-12-11,1,JEEP,Grey,Lexus,Abuja,Abuja,CarSafe
 ID_8LK5E68,2010-12-11,2011-12-10,Male,37.0,2010-12-11,1,JEEP,Grey,Lexus,Abuja,Abuja,Car Classic
