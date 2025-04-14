@@ -20,7 +20,7 @@ def load_or_create_model():
     else:
         st.warning("Model file not found. Please train the model first.")
         try:
-            train = pd.read_csv('./data/Train.csv')
+            train = pd.read_csv('../data/Train.csv')
             model = train_model(train)
             joblib.dump(model, model_path)
         except Exception as e:
@@ -39,7 +39,7 @@ def load_or_create_encoders():
     else:
         st.warning("Encoder and/or scaler files not found. Creating new ones from training data.")
         try:
-            train = pd.read_csv('./data/Train.csv')
+            train = pd.read_csv('../data/Train.csv')
             
             categorical_columns = ['Gender', 'Car_Category', 'Subject_Car_Colour', 'Subject_Car_Make', 'LGA_Name', 'State', 'ProductName']
             encoder = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
@@ -104,9 +104,6 @@ def train_model(train_data):
     joblib.dump(encoder, 'encoder.pkl')
     joblib.dump(scaler, 'scaler.pkl')
     
-    global_feature_names = list(X.columns)
-    joblib.dump(global_feature_names, 'feature_names.pkl')
-    
     return model
 
 def preprocess_data(df, encoder, scaler):
@@ -148,27 +145,38 @@ def preprocess_data(df, encoder, scaler):
     
     return feature_df, id_col
 
-def get_feature_names():
-    feature_names_path = 'feature_names.pkl'
-    
-    if os.path.exists(feature_names_path):
-        return joblib.load(feature_names_path)
-    
+def get_feature_names_from_data(encoder, scaler):
+    """Get feature names by processing a small sample of data"""
     try:
-        train = pd.read_csv('./data/Train.csv')
+      
+        train_sample = pd.read_csv('../data/Train.csv', nrows=5)
         
+     
         categorical_columns = ['Gender', 'Car_Category', 'Subject_Car_Colour', 'Subject_Car_Make', 'LGA_Name', 'State', 'ProductName']
-        encoder = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
-        encoder.fit(train[categorical_columns].fillna('Unknown'))
+        numerical_columns = ['Age', 'No_Pol']
         
-        numerical_columns = ['Age', 'No_Pol', 'Policy_Duration', 'Customer_Tenure', 'Recency']
-        encoded_cat_names = encoder.get_feature_names_out(categorical_columns)
-        all_feature_names = numerical_columns + list(encoded_cat_names)
+
+        train_sample['Policy_Start_Date'] = pd.to_datetime(train_sample['Policy_Start_Date'])
+        train_sample['Policy_End_Date'] = pd.to_datetime(train_sample['Policy_End_Date'])
+        train_sample['First_Transaction_Date'] = pd.to_datetime(train_sample['First_Transaction_Date'])
         
-        joblib.dump(all_feature_names, feature_names_path)
-        return all_feature_names
+        train_sample['Policy_Duration'] = (train_sample['Policy_End_Date'] - train_sample['Policy_Start_Date']).dt.days
+        train_sample['Customer_Tenure'] = (train_sample['Policy_Start_Date'] - train_sample['First_Transaction_Date']).dt.days
+        train_sample['Recency'] = (pd.Timestamp.today() - train_sample['Policy_End_Date']).dt.days
+        
+     
+        numerical_columns += ['Policy_Duration', 'Customer_Tenure', 'Recency']
+        
+       
+        encoded_data = encoder.transform(train_sample[categorical_columns])
+        encoded_df = pd.DataFrame(encoded_data, columns=encoder.get_feature_names_out(categorical_columns))
+        
+      
+        feature_names = numerical_columns + list(encoded_df.columns)
+        
+        return feature_names
     except Exception as e:
-        st.warning(f"Could not get feature names: {e}")
+        st.warning(f"Could not extract feature names: {e}")
         return None
 
 def main():
@@ -239,16 +247,6 @@ def main():
                     st.success(f"✅ This customer is not likely to file a claim in the next 3 months")
                     st.progress(float(prediction_proba[1]), text=f"Claim probability: {prediction_proba[1]:.2%}")
                 
-                st.write("Customer Profile:")
-                st.json({
-                    "Gender": gender,
-                    "Age": age,
-                    "Car": f"{car_color} {car_make} {car_category}",
-                    "Location": f"{lga}, {state}",
-                    "Policy Count": no_pol,
-                    "Product": product_name,
-                    "Policy Duration": f"{(policy_end - policy_start).days} days"
-                })
                 
             except Exception as e:
                 st.error(f"An error occurred during prediction: {e}")
@@ -311,9 +309,7 @@ def main():
                         col2.metric("Predicted Claims", claims)
                         col3.metric("Claim Rate", f"{claims/total:.1%}")
                         
-                        st.subheader("Distribution of Claim Probabilities")
-                        hist_data = pd.DataFrame({'Claim Probability': probabilities})
-                        st.bar_chart(hist_data.value_counts(bins=10).sort_index())
+                    
                         
             except Exception as e:
                 st.error(f"An error occurred during batch prediction: {e}")
@@ -325,7 +321,8 @@ def main():
         if hasattr(model, 'feature_importances_'):
             st.subheader("Feature Importance")
             
-            feature_names = get_feature_names()
+            # Get feature names directly from preprocessing a sample
+            feature_names = get_feature_names_from_data(encoder, scaler)
             
             if feature_names is not None and len(feature_names) == len(model.feature_importances_):
                 importance_df = pd.DataFrame({
@@ -338,6 +335,7 @@ def main():
                 st.subheader("Top 15 Important Features")
                 st.dataframe(importance_df.head(15))
             else:
+                st.warning(f"Feature names count ({len(feature_names) if feature_names else 'Unknown'}) doesn't match feature importances count ({len(model.feature_importances_)})")
                 importance_df = pd.DataFrame({
                     'Feature': [f'Feature {i}' for i in range(len(model.feature_importances_))],
                     'Importance': model.feature_importances_
@@ -356,7 +354,7 @@ def main():
             """)
         
         try:
-            train_data = pd.read_csv('./data/Train.csv')
+            train_data = pd.read_csv('../data/Train.csv')
             
             train_data['Policy_Start_Date'] = pd.to_datetime(train_data['Policy_Start_Date'])
             train_data['Policy_End_Date'] = pd.to_datetime(train_data['Policy_End_Date'])
@@ -394,19 +392,19 @@ def main():
             st.warning(f"Could not calculate actual model metrics: {e}")
             
             st.subheader("Model Performance")
-            
+    
             col1, col2, col3 = st.columns(3)
-            col1.metric("F1 Score", "0.783")
-            col2.metric("Precision", "0.812")
-            col3.metric("Recall", "0.756")
-            
+            col1.metric("F1 Score", "0.887")
+            col2.metric("Precision", "0.982") 
+            col3.metric("Recall", "0.809")
+    
             st.write("### Confusion Matrix")
             confusion_matrix = pd.DataFrame([
-                [856, 144],
-                [112, 388]
+                [10602, 22],
+                [278, 1177]
             ], index=['Actual No Claim', 'Actual Claim'], 
-               columns=['Predicted No Claim', 'Predicted Claim'])
-            
+            columns=['Predicted No Claim', 'Predicted Claim'])
+    
             st.dataframe(confusion_matrix)
         
         st.write(f"""
