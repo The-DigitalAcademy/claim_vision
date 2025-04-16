@@ -4,7 +4,8 @@ import numpy as np
 import joblib
 import os
 from datetime import datetime, timedelta
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import LabelEncoder
+from styling import custom_styling
 
 st.set_page_config(
     page_title="ClaimVision - Predictive Insurance Insights",
@@ -12,26 +13,34 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+custom_styling()
+
+if 'feature_names' not in st.session_state:
+    st.session_state['feature_names'] = []
+
 def preprocess_data(df):
     date_columns = ['Policy_Start_Date', 'Policy_End_Date', 'First_Transaction_Date']
     for col in date_columns:
         if col in df.columns:
             df[col] = pd.to_datetime(df[col])
     
-    df['Policy_Duration'] = (df['Policy_End_Date'] - df['Policy_Start_Date']).dt.days
-    df['Customer_Tenure'] = (df['Policy_Start_Date'] - df['First_Transaction_Date']).dt.days
-    df['Recency'] = (pd.Timestamp.today() - df['Policy_End_Date']).dt.days
+    df['Policy_Tenure'] = (df['Policy_End_Date'].dt.year - df['Policy_Start_Date'].dt.year) * 12 + \
+                                (df['Policy_End_Date'].dt.month - df['Policy_Start_Date'].dt.month)
     
-    categorical_columns = ['Gender', 'Car_Category', 'Subject_Car_Colour', 'Subject_Car_Make', 'LGA_Name', 'State', 'ProductName']
-    df[categorical_columns] = df[categorical_columns].fillna('Unknown')
+    categorical_columns = ['Policy_Start_Date','Policy_End_Date','Age','Gender', 'Car_Category', 'Subject_Car_Colour', 'Subject_Car_Make', 'LGA_Name', 'State', 'ProductName']
+
+    le = LabelEncoder()
+    for col in categorical_columns:
+        df[col] = le.fit_transform(df[col].astype(str))
     
-    encoder = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
-    encoded_data = encoder.fit_transform(df[categorical_columns])
-    encoded_df = pd.DataFrame(encoded_data, columns=encoder.get_feature_names_out(categorical_columns))
+    feature_df = df.drop(columns=['State','First_Transaction_Date'])
+    id_col = None
+    if 'ID' in feature_df.columns:
+        id_col = feature_df['ID'].copy()
+        feature_df = feature_df.drop(columns=['ID'])
     
-    feature_df = df.drop(columns=categorical_columns + date_columns)
-    
-    feature_df = pd.concat([feature_df.reset_index(drop=True), encoded_df.reset_index(drop=True)], axis=1)
+    if 'target' in feature_df.columns:
+        feature_df = feature_df.drop(columns=['target'])
     
     return feature_df
     
@@ -39,24 +48,24 @@ train = pd.read_csv('../data/backfilled_data.csv')
 from joblib import load
                         
 def main():
-    st.title("ClaimVision - Predictive Insurance Insights")
-    st.markdown("### Predict which customers will file insurance claims in the next 3 months")
+    st.image("../images/final.png", width=300)
+    st.markdown('<p class="subtitle">Predict which customers will file insurance claims in the next 3 months</p>', unsafe_allow_html=True)
     
-    model = load('claim_prediction_model.pkl')
+    model = load('model.pkl')
+    
+    feature_names = []
        
     car_category = train['Car_Category'].unique()
     car_color = train['Subject_Car_Colour'].unique()
     car_make = train['Subject_Car_Make'].unique()
     product_name = train['ProductName'].unique()
     state = train['State'].unique()
-    
-    if 'feature_names' not in st.session_state:
-        st.session_state['feature_names'] = []
+    lga_name = train['LGA_Name'].unique()
 
     tab1, tab2, tab3 = st.tabs(["Individual Prediction", "Batch Prediction", "Model Insights"])
     
     with tab1:
-        st.header("Individual Customer Prediction")
+        st.markdown('<h2 class="header">Individual Prediction</h2>', unsafe_allow_html=True)
         
         col1, col2 = st.columns(2)
         with col1:
@@ -66,7 +75,7 @@ def main():
             car_color = st.selectbox("Car Color", car_color)
             car_make = st.selectbox("Car Make", car_make)
             state = st.selectbox("State", state)
-            lga = st.text_input("LGA Name", placeholder="Example: Kosofe")
+            lga = st.selectbox("LGA Name", lga_name)
         with col2:
             no_pol = st.number_input("Number of Policies", min_value=1, max_value=10, value=1)
             product_name = st.selectbox("Product Name", product_name)
@@ -92,10 +101,11 @@ def main():
                     }
  
                 df = pd.DataFrame(data)
- 
-                processed_df = preprocess_data(df)
+                
+                processed_df, _ = preprocess_data(df)
                 feature_names = list(processed_df.columns)
                 st.session_state['feature_names'] = feature_names
+                print(feature_names)
                 
                 prediction = model.predict(processed_df)[0]
                 prediction_proba = model.predict_proba(processed_df)[0]
@@ -113,7 +123,7 @@ def main():
                 st.info("Please check that your input data is valid and try again.")
                 
     with tab2:
-        st.header("Batch Prediction")
+        st.markdown('<h2 class="header">Batch Prediction</h2>', unsafe_allow_html=True)
         
         st.write("Upload a CSV file with customer data to predict claims in batch")
         uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
@@ -174,7 +184,7 @@ def main():
                 st.info("Please check that your file format is correct and contains all required columns.")
     
     with tab3:
-        st.header("Model Insights")
+        st.markdown('<h2 class="header">Model Insights</h2>', unsafe_allow_html=True)
         
         if st.session_state['feature_names']:
             st.write("The feature names are:")
@@ -182,43 +192,31 @@ def main():
         else:
             st.write("No feature names available. Please run a prediction first.")
 
-        if hasattr(model, 'feature_importances_'):
-            st.subheader("Feature Importance")
-            
-            importance_df = pd.DataFrame({
-                'Feature': feature_names,
-                'Importance': model.feature_importances_
-                }).sort_values('Importance', ascending=False)
+        from sklearn.feature_selection import mutual_info_classif
+        
+        x = preprocess_data(train)
+        y = train['target']
+
+        importance = mutual_info_classif(x, y)
+        feat_importances = pd.Series(importance, index=x.columns)
+        feat_importances = feat_importances.sort_values(ascending=False)
                 
-            st.bar_chart(importance_df.set_index('Feature').head(15))
+        st.bar_chart(feat_importances)
                 
-            st.subheader("Top 15 Important Features")
-            st.dataframe(importance_df.head(15))
+        st.subheader("Features by Importance")
+        st.dataframe(feat_importances.head(15))
             
-            st.write("""
+        st.write("""
             ### Key Factors Affecting Claims:
             
-            1. **Policy Duration**: Longer policies may have different claim patterns
-            2. **Customer Tenure**: How long the customer has been with the company
-            3. **Age**: Customer's age is a significant predictor of claim likelihood
-            4. **Recency**: How recently a policy ended affects claim probability
-            5. **Number of Policies**: Customers with multiple policies show different claim behavior
+            1. **Policy Tenure**: Longer policies may have different claim patterns
+            2. **Age**: Customer's age is a significant predictor of claim likelihood
+            3. **Number of Policies**: Customers with multiple policies show different claim behavior
             """)
         
         try:
-            train_data = pd.read_csv('../data/Train.csv')
-            
-            train_data['Policy_Start_Date'] = pd.to_datetime(train_data['Policy_Start_Date'])
-            train_data['Policy_End_Date'] = pd.to_datetime(train_data['Policy_End_Date'])
-            train_data['First_Transaction_Date'] = pd.to_datetime(train_data['First_Transaction_Date'])
-            
-            train_data['Policy_Duration'] = (train_data['Policy_End_Date'] - train_data['Policy_Start_Date']).dt.days
-            train_data['Customer_Tenure'] = (train_data['Policy_Start_Date'] - train_data['First_Transaction_Date']).dt.days
-            train_data['Recency'] = (pd.Timestamp.today() - train_data['Policy_End_Date']).dt.days
-            
-            processed_df, _ = preprocess_data(train_data, encoder, scaler)
-            y_true = train_data['target']
-            y_pred = model.predict(processed_df)
+            y_true = y
+            y_pred = model.predict(x)
             
             from sklearn.metrics import f1_score, precision_score, recall_score, confusion_matrix
             
