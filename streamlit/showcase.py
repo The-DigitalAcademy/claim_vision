@@ -15,11 +15,8 @@ st.set_page_config(
 
 custom_styling()
 
-if 'feature_names' not in st.session_state:
-    st.session_state['feature_names'] = []
-
 def preprocess_data(df):
-    date_columns = ['Policy_Start_Date', 'Policy_End_Date', 'First_Transaction_Date']
+    date_columns = ['Policy_Start_Date', 'Policy_End_Date']
     for col in date_columns:
         if col in df.columns:
             df[col] = pd.to_datetime(df[col])
@@ -36,24 +33,53 @@ def preprocess_data(df):
     feature_df = df.drop(columns=['State','First_Transaction_Date'])
     id_col = None
     if 'ID' in feature_df.columns:
-        id_col = feature_df['ID'].copy()
         feature_df = feature_df.drop(columns=['ID'])
     
     if 'target' in feature_df.columns:
         feature_df = feature_df.drop(columns=['target'])
     
     return feature_df
+
+def batch_preprocess(df):
+    date_columns = ['Policy_Start_Date', 'Policy_End_Date']
+    for col in date_columns:
+        if col in df.columns:
+            df[col] = pd.to_datetime(df[col])
+    
+    df['Policy_Tenure'] = (df['Policy_End_Date'].dt.year - df['Policy_Start_Date'].dt.year) * 12 + \
+                                (df['Policy_End_Date'].dt.month - df['Policy_Start_Date'].dt.month)
+    
+    categorical_columns = ['Policy_Start_Date','Policy_End_Date','Age','Gender', 'Car_Category', 'Subject_Car_Colour', 'Subject_Car_Make', 'LGA_Name', 'State', 'ProductName']
+
+    le = LabelEncoder()
+    for col in categorical_columns:
+        df[col] = le.fit_transform(df[col].astype(str))
+    
+    feature_df = df.drop(columns=['State','First_Transaction_Date'])
+    
+    id_col = None
+    if 'ID' in feature_df.columns:
+        id_col = feature_df['ID'].copy()
+        feature_df = feature_df.drop(columns=['ID'])
+    
+    if 'target' in feature_df.columns:
+        feature_df = feature_df.drop(columns=['target'])
+    
+    numerical_columns = ['Age', 'No_Pol', 'Policy_Duration', 'Customer_Tenure', 'Recency']
+    for col in numerical_columns:
+        if col in feature_df.columns:
+            feature_df[col] = feature_df[col].fillna(feature_df[col].mean())
+    
+    return feature_df, id_col
     
 train = pd.read_csv('../data/backfilled_data.csv')
-from joblib import load
                         
 def main():
     st.image("../images/final.png", width=300)
     st.markdown('<p class="subtitle">Predict which customers will file insurance claims in the next 3 months</p>', unsafe_allow_html=True)
     
+    from joblib import load
     model = load('model.pkl')
-    
-    feature_names = []
        
     car_category = train['Car_Category'].unique()
     car_color = train['Subject_Car_Colour'].unique()
@@ -65,7 +91,7 @@ def main():
     tab1, tab2, tab3 = st.tabs(["Individual Prediction", "Batch Prediction", "Model Insights"])
     
     with tab1:
-        st.markdown('<h2 class="header">Individual Prediction</h2>', unsafe_allow_html=True)
+        st.subheader("Individual Prediction")
         
         col1, col2 = st.columns(2)
         with col1:
@@ -74,11 +100,12 @@ def main():
             car_category = st.selectbox("Car Category", car_category)
             car_color = st.selectbox("Car Color", car_color)
             car_make = st.selectbox("Car Make", car_make)
-            state = st.selectbox("State", state)
-            lga = st.selectbox("LGA Name", lga_name)
+            product_name = st.radio("Product Name", product_name, index=None, help="Select one of the available options.", horizontal=True)
+            
         with col2:
             no_pol = st.number_input("Number of Policies", min_value=1, max_value=10, value=1)
-            product_name = st.selectbox("Product Name", product_name)
+            state = st.selectbox("State", state)
+            lga = st.selectbox("LGA Name", lga_name)
             policy_start = st.date_input("Policy Start Date", datetime.now() - timedelta(days=180))
             policy_end = st.date_input("Policy End Date", datetime.now() + timedelta(days=180))
             first_transaction = st.date_input("First Transaction Date", policy_start)
@@ -86,6 +113,8 @@ def main():
         if st.button("Predict Claim Likelihood", type="primary"):
             try:
                 data = {
+                    'Policy_Start_Date': [pd.to_datetime(policy_start)],
+                    'Policy_End_Date': [pd.to_datetime(policy_end)],
                     'Gender': [gender],
                     'Age': [age],
                     'No_Pol': [no_pol],
@@ -95,17 +124,12 @@ def main():
                     'LGA_Name': [lga],
                     'State': [state],
                     'ProductName': [product_name],
-                    'Policy_Start_Date': [pd.to_datetime(policy_start)],
-                    'Policy_End_Date': [pd.to_datetime(policy_end)],
                     'First_Transaction_Date': [pd.to_datetime(first_transaction)]
                     }
  
                 df = pd.DataFrame(data)
                 
-                processed_df, _ = preprocess_data(df)
-                feature_names = list(processed_df.columns)
-                st.session_state['feature_names'] = feature_names
-                print(feature_names)
+                processed_df = preprocess_data(df)
                 
                 prediction = model.predict(processed_df)[0]
                 prediction_proba = model.predict_proba(processed_df)[0]
@@ -123,7 +147,7 @@ def main():
                 st.info("Please check that your input data is valid and try again.")
                 
     with tab2:
-        st.markdown('<h2 class="header">Batch Prediction</h2>', unsafe_allow_html=True)
+        st.subheader("Batch Prediction")
         
         st.write("Upload a CSV file with customer data to predict claims in batch")
         uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
@@ -145,7 +169,7 @@ def main():
                     if missing_columns:
                         st.error(f"Missing required columns: {', '.join(missing_columns)}")
                     else:
-                        processed_df, id_column = preprocess_data(df)
+                        processed_df, id_column = batch_preprocess(df)
                         
                         if id_column is None:
                             id_column = pd.Series(range(len(processed_df)), name='ID')
@@ -184,13 +208,7 @@ def main():
                 st.info("Please check that your file format is correct and contains all required columns.")
     
     with tab3:
-        st.markdown('<h2 class="header">Model Insights</h2>', unsafe_allow_html=True)
-        
-        if st.session_state['feature_names']:
-            st.write("The feature names are:")
-            st.write(st.session_state['feature_names'])
-        else:
-            st.write("No feature names available. Please run a prediction first.")
+        st.subheader("Model Insights")
 
         from sklearn.feature_selection import mutual_info_classif
         

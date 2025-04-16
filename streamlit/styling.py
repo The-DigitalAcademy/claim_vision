@@ -5,7 +5,7 @@ def custom_styling():
         """
         <style>
             .main {
-                background-color: #6079AF;
+                background-image: linear-gradient(to bottom right, #6079AF, #ADD8E6);
             }
 
             .title {
@@ -32,9 +32,26 @@ def custom_styling():
                 color: white;
                 max-width: 500px;
             }
+            
+            .stTabs [data-baseweb="tab"] {
+                font-family: Arial, sans-serif;
+                font-size: 16px;
+                color:  white;
+                position : relative
+            }
+            
+            .stTabs [data-baseweb="tab"]:hover {
+                font-size: 30px;
+                color: #003152;
+            }
+            
+            .stTabs [data-baseweb="tab"][aria-selected="true"] {
+                font-weight: bold;
+                color: #003152;
+            }
 
             .stButton > button {
-                background-color: #0047AB;
+                background-color: #003152;
                 color: white;
                 border: none;
                 padding: 8px 25px;
@@ -50,10 +67,45 @@ def custom_styling():
             }
 
             .stButton > button:hover {
-                background-color: #ADD8E6;
+                background-color: #6079AF;
                 color: red;
             }
+            
+            .stSelectbox div[data-baseweb="select"] > div {
+                background-color: #6079AF;
+            }
+            
+            .stSelectbox div[data-baseweb="select"] .css-1uccc91-singleValue {
+                background-color: #6079AF;
+            }
+            
+            .stSelectbox div[data-baseweb="select"] .css-1n7v3ny-option {
+                background-color: #6079AF;
+            }
+            
+            .stNumberInput input {
+                background-color: #6079AF;
+            }
+            
+            .stNumberInput input:focus {
+                background-color: #6079AF;
+            }
+            
+            .stDateInput input {
+                background-color: #6079AF;
+            }
+            
+            .stDateInput input:focus {
+                background-color: #6079AF;
+            }
+            
+            .stChart {
+                background-color: transparent;
+                padding: 10px;
+                border-radius: 5px;
+            }
 
+    
             /* Input field styling */
             .stTextInput > div > div > input {
                 background-color: white;
