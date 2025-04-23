@@ -5,12 +5,18 @@ import joblib
 import os
 from datetime import datetime, timedelta
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from styling import custom_styling
+
+
+
 
 st.set_page_config(
     page_title="ClaimVision - Predictive Insurance Insights",
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+custom_styling()
 
 @st.cache_resource
 def load_or_create_model():
@@ -180,8 +186,9 @@ def get_feature_names_from_data(encoder, scaler):
         return None
 
 def main():
-    st.title("ClaimVision - Predictive Insurance Insights")
-    st.markdown("### Predict which customers will file insurance claims in the next 3 months")
+    
+    st.image("../images/final.png", width=300)
+    st.markdown('<p class="subtitle">Predict which customers will file insurance claims in the next 3 months</p>', unsafe_allow_html=True)
     
     model = load_or_create_model()
     encoder, scaler = load_or_create_encoders()
@@ -189,6 +196,15 @@ def main():
     if model is None or encoder is None or scaler is None:
         st.error("Could not initialize the prediction system. Please check the data folder and try again.")
         st.stop()
+        
+    train = pd.read_csv('../data/front_filled_train.csv')
+       
+    car_category = train['Car_Category'].unique()
+    car_color = train['Subject_Car_Colour'].unique()
+    car_make = train['Subject_Car_Make'].unique()
+    product_name = train['ProductName'].unique()
+    state = train['State'].unique()
+    lga_name = train['LGA_Name'].unique()
     
     tab1, tab2, tab3 = st.tabs(["Individual Prediction", "Batch Prediction", "Model Insights"])
     
@@ -196,20 +212,18 @@ def main():
         st.header("Individual Customer Prediction")
         
         col1, col2 = st.columns(2)
-        
         with col1:
             gender = st.selectbox("Gender", ["Male", "Female"])
             age = st.number_input("Age", min_value=18, max_value=100, value=30)
-            car_category = st.selectbox("Car Category", ["Saloon", "JEEP", "SUV", "Hatchback", "Pickup", "Other"])
-            car_color = st.selectbox("Car Color", ["Black", "White", "Silver", "Grey", "Red", "Blue", "Green", "Other"])
-            car_make = st.selectbox("Car Make", ["TOYOTA", "Honda", "Ford", "Nissan", "Kia", "Other"])
+            car_category = st.selectbox("Car Category", car_category)
+            car_color = st.selectbox("Car Color", car_color)
+            car_make = st.selectbox("Car Make", car_make)
+            product_name = st.radio("Product Name", product_name, help="Select one of the available options.", horizontal=True)
             
         with col2:
-            state = st.selectbox("State", ["Abuja", "Lagos", "Rivers", "Benue", "Other"])
-            lga = st.text_input("LGA Name", "Kosofe")
             no_pol = st.number_input("Number of Policies", min_value=1, max_value=10, value=1)
-            product_name = st.selectbox("Product Name", ["Car Classic", "Car Premium", "Car Basic"])
-            
+            state = st.selectbox("State", state, index=1)
+            lga = st.selectbox("LGA Name", lga_name, index=2)
             policy_start = st.date_input("Policy Start Date", datetime.now() - timedelta(days=180))
             policy_end = st.date_input("Policy End Date", datetime.now() + timedelta(days=180))
             first_transaction = st.date_input("First Transaction Date", policy_start)
