@@ -6,9 +6,7 @@ import os
 from datetime import datetime, timedelta
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from styling import custom_styling
-
-
-
+import altair as alt
 
 st.set_page_config(
     page_title="ClaimVision - Predictive Insurance Insights",
@@ -209,7 +207,7 @@ def main():
     tab1, tab2, tab3 = st.tabs(["Individual Prediction", "Batch Prediction", "Model Insights"])
     
     with tab1:
-        st.header("Individual Customer Prediction")
+        st.subheader("Individual Customer Prediction")
         
         col1, col2 = st.columns(2)
         with col1:
@@ -224,8 +222,8 @@ def main():
             no_pol = st.number_input("Number of Policies", min_value=1, max_value=10, value=1)
             state = st.selectbox("State", state, index=1)
             lga = st.selectbox("LGA Name", lga_name, index=2)
-            policy_start = st.date_input("Policy Start Date", datetime.now() - timedelta(days=180))
-            policy_end = st.date_input("Policy End Date", datetime.now() + timedelta(days=180))
+            policy_start = st.date_input("Policy Start Date", datetime.now() - timedelta(days=90))
+            policy_end = st.date_input("Policy End Date", datetime.now() + timedelta(days=90))
             first_transaction = st.date_input("First Transaction Date", policy_start)
             
         if st.button("Predict Claim Likelihood", type="primary"):
@@ -256,10 +254,10 @@ def main():
                 
                 if prediction == 1:
                     st.error(f"⚠️ This customer is likely to file a claim in the next 3 months")
-                    st.progress(float(prediction_proba[1]), text=f"Claim probability: {prediction_proba[1]:.2%}")
+                    st.text(f"Claim probability: {prediction_proba[1]:.2%}")
                 else:
                     st.success(f"✅ This customer is not likely to file a claim in the next 3 months")
-                    st.progress(float(prediction_proba[1]), text=f"Claim probability: {prediction_proba[1]:.2%}")
+                    st.text(f"Claim probability: {prediction_proba[1]:.2%}")
                 
                 
             except Exception as e:
@@ -267,7 +265,7 @@ def main():
                 st.info("Please check that your input data is valid and try again.")
                 
     with tab2:
-        st.header("Batch Prediction")
+        st.subheader("Batch Prediction")
         
         st.write("Upload a CSV file with customer data to predict claims in batch")
         uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
@@ -330,7 +328,7 @@ def main():
                 st.info("Please check that your file format is correct and contains all required columns.")
     
     with tab3:
-        st.header("Model Insights")
+        st.subheader("Model Insights")
         
         if hasattr(model, 'feature_importances_'):
             st.subheader("Feature Importance")
@@ -342,9 +340,20 @@ def main():
                 importance_df = pd.DataFrame({
                     'Feature': feature_names,
                     'Importance': model.feature_importances_
-                }).sort_values('Importance', ascending=False)
+                    }).sort_values('Importance', ascending=False).head(15)
                 
-                st.bar_chart(importance_df.set_index('Feature').head(15))
+                chart = alt.Chart(importance_df.reset_index()).mark_bar().encode(
+                    x='Feature',
+                    y='Importance'
+                    ).properties(
+                        width=1000,
+                        height=400,
+                        background='#6079AF'
+                        ).configure_axis(
+                        labelAngle=0)
+                        
+                st.altair_chart(chart)
+
                 
                 st.subheader("Top 15 Important Features")
                 st.dataframe(importance_df.head(15))
