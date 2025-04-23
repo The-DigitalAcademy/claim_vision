@@ -91,6 +91,20 @@ def custom_styling():
                 background-color: #6079AF;
             }
             
+            .stNumberInput > div > div > input[type=number] {
+                border-radius: 0;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .stNumberInput > div > div > button:first-of-type {
+                background-color: #6079AF;
+            }
+            
+            .stNumberInput > div > div > button:last-of-type {
+                background-color: #6079AF;
+            }
+
             .stDateInput input {
                 background-color: #6079AF;
             }
@@ -99,12 +113,15 @@ def custom_styling():
                 background-color: #6079AF;
             }
             
-            .stChart {
-                background-color: transparent;
-                padding: 10px;
-                border-radius: 5px;
+            div[data-baseweb="radio"] > div {
+                background-color: white;
+                border: 1px solid #000;
+                border-radius: 50%;
+                width: 16px;
+                height: 16px;
+                display: inline-block;
+                position: relative;
             }
-
     
             /* Input field styling */
             .stTextInput > div > div > input {
@@ -119,15 +136,11 @@ def custom_styling():
                 border-color: #FFC107;
                 box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.2);
             }
-
-            /* Error message styling */
-            .stAlert {
-                background-color: #ff4444;
-                color: white;
-                border-radius: 5px;
-                padding: 10px;
-                margin: 10px 0;
+            
+            .stChart {
+                background-color: white; 
             }
+
         </style>
         """,
         unsafe_allow_html=True,
