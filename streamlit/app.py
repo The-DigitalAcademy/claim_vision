@@ -340,7 +340,7 @@ def main():
                 importance_df = pd.DataFrame({
                     'Feature': feature_names,
                     'Importance': model.feature_importances_
-                    }).sort_values('Importance', ascending=False).head(15)
+                    }).sort_values('Importance', ascending=False).head(10)
                 
                 chart = alt.Chart(importance_df.reset_index()).mark_bar().encode(
                     x='Feature',
@@ -354,9 +354,9 @@ def main():
                         
                 st.altair_chart(chart)
                 
-                st.subheader("Top 15 Important Features")
+                st.subheader("Top 10 Important Features")
                 
-                html = importance_df.head(15).to_html(classes='dataframe', index=False)
+                html = importance_df.head(10).to_html(classes='dataframe', index=False)
                 st.write(html, unsafe_allow_html=True)
             else:
                 st.warning(f"Feature names count ({len(feature_names) if feature_names else 'Unknown'}) doesn't match feature importances count ({len(model.feature_importances_)})")
