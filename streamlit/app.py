@@ -346,17 +346,20 @@ def main():
                     x='Feature',
                     y='Importance'
                     ).properties(
-                        width=1000,
+                        width=1230,
                         height=400,
                         background='#6079AF'
-                        ).configure_axis(
+                    ).configure_axis(
                         labelAngle=0)
                         
                 st.altair_chart(chart)
-
                 
                 st.subheader("Top 15 Important Features")
-                st.dataframe(importance_df.head(15))
+                
+                html = importance_df.head(15).to_html(classes='dataframe', index=False)
+                st.write(html, unsafe_allow_html=True)
+
+                # st.dataframe(importance_df.head(15))
             else:
                 st.warning(f"Feature names count ({len(feature_names) if feature_names else 'Unknown'}) doesn't match feature importances count ({len(model.feature_importances_)})")
                 importance_df = pd.DataFrame({
@@ -415,11 +418,6 @@ def main():
             st.warning(f"Could not calculate actual model metrics: {e}")
             
             st.subheader("Model Performance")
-    
-            col1, col2, col3 = st.columns(3)
-            col1.metric("F1 Score", "0.887")
-            col2.metric("Precision", "0.982") 
-            col3.metric("Recall", "0.809")
     
             st.write("### Confusion Matrix")
             confusion_matrix = pd.DataFrame([
