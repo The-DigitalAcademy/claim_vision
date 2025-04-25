@@ -346,7 +346,7 @@ def main():
                     x='Feature',
                     y='Importance'
                     ).properties(
-                        width=1230,
+                        width=1250,
                         height=400,
                         background='#6079AF'
                     ).configure_axis(
