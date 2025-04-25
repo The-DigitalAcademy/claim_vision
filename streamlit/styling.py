@@ -137,8 +137,20 @@ def custom_styling():
                 box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.2);
             }
             
-            .stChart {
-                background-color: white; 
+            .dataframe {
+                border: 2px solid #6079AF;
+                border-collapse: collapse;
+                width: 1000;
+            }
+            
+            .dataframe th, .dataframe td {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+            
+            .dataframe th {
+                background-color: #6079AF;
+                color: white;
             }
 
         </style>
