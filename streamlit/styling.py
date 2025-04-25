@@ -140,12 +140,13 @@ def custom_styling():
             .dataframe {
                 border: 2px solid #6079AF;
                 border-collapse: collapse;
-                width: 1000;
+                width: 30%;
             }
             
             .dataframe th, .dataframe td {
                 border: 1px solid #ddd;
                 padding: 8px;
+                text-align: left;
             }
             
             .dataframe th {
