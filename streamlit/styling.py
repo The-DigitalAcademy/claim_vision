@@ -5,36 +5,40 @@ def custom_styling():
         """
         <style>
             .main {
-                background-image: linear-gradient(to bottom right, #6079AF, #ADD8E6);
+                background-image: linear-gradient(to bottom right, #1f1247ff, #7b67b3ff);
             }
 
             .title {
+                font-family: "Open Sans", sans-serif;
                 font-size: 50px;
                 font-weight: bold;
                 color: black;
             }
             
             .subtitle {
-                font-size: 30px;
-                font-weight: bold;
+                font-family: "Open Sans", sans-serif;
+                font-weight: 300;
+                font-size: 35px;
                 color: white;
                 margin-top: -40px
             }
                 
-            .header {
-                font-size: 20px;
-                font-weight: bold;
+            .subheader {
+                font-family: "Open Sans", sans-serif;
+                font-size: 25px;
                 color: white;
+                margin-top: -50px
             }
 
             .text {
+                font-family: "Open Sans", sans-serif;
                 font-size: 16px;
                 color: white;
                 max-width: 500px;
             }
             
             .stTabs [data-baseweb="tab"] {
-                font-family: Arial, sans-serif;
+                font-family: "Open Sans", sans-serif;
                 font-size: 16px;
                 color:  white;
                 position : relative
@@ -42,16 +46,17 @@ def custom_styling():
             
             .stTabs [data-baseweb="tab"]:hover {
                 font-size: 30px;
-                color: #003152;
+                color: #77be5cff;
             }
             
             .stTabs [data-baseweb="tab"][aria-selected="true"] {
                 font-weight: bold;
-                color: #003152;
+                color: #77be5cff;
             }
 
             .stButton > button {
-                background-color: #003152;
+                font-family: "Open Sans", sans-serif;
+                background-color: #1f1247ff;
                 color: white;
                 border: none;
                 padding: 8px 25px;
@@ -67,28 +72,28 @@ def custom_styling():
             }
 
             .stButton > button:hover {
-                background-color: #6079AF;
-                color: red;
+                background-color: #77be5cff;
+                color: white;
             }
             
             .stSelectbox div[data-baseweb="select"] > div {
-                background-color: #6079AF;
+                background-color: #77be5cff;
             }
             
             .stSelectbox div[data-baseweb="select"] .css-1uccc91-singleValue {
-                background-color: #6079AF;
+                background-color: #77be5cff;
             }
             
             .stSelectbox div[data-baseweb="select"] .css-1n7v3ny-option {
-                background-color: #6079AF;
+                background-color: #77be5cff;
             }
             
             .stNumberInput input {
-                background-color: #6079AF;
+                background-color: #77be5cff;
             }
             
             .stNumberInput input:focus {
-                background-color: #6079AF;
+                background-color: #77be5cff;
             }
             
             .stNumberInput > div > div > input[type=number] {
@@ -98,19 +103,19 @@ def custom_styling():
             }
             
             .stNumberInput > div > div > button:first-of-type {
-                background-color: #6079AF;
+                background-color: #77be5cff;
             }
             
             .stNumberInput > div > div > button:last-of-type {
-                background-color: #6079AF;
+                background-color: #77be5cff;
             }
 
             .stDateInput input {
-                background-color: #6079AF;
+                background-color: #77be5cff;
             }
             
             .stDateInput input:focus {
-                background-color: #6079AF;
+                background-color: #77be5cff;
             }
             
             div[data-baseweb="radio"] > div {
@@ -138,7 +143,7 @@ def custom_styling():
             }
             
             .dataframe {
-                border: 2px solid #6079AF;
+                border: 2px solid #77be5cff;
                 border-collapse: collapse;
                 width: 30%;
             }
@@ -150,7 +155,7 @@ def custom_styling():
             }
             
             .dataframe th {
-                background-color: #6079AF;
+                background-color: #77be5cff;
                 color: white;
             }
 

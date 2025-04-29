@@ -207,7 +207,8 @@ def main():
     tab1, tab2, tab3 = st.tabs(["Individual Prediction", "Batch Prediction", "Model Insights"])
     
     with tab1:
-        st.subheader("Individual Customer Prediction")
+        st.subheader("")
+        st.markdown('<p class="subheader">Individual Customer Prediction</p>', unsafe_allow_html=True)
         
         col1, col2 = st.columns(2)
         with col1:
@@ -222,7 +223,7 @@ def main():
             no_pol = st.number_input("Number of Policies", min_value=1, max_value=10, value=1)
             state = st.selectbox("State", state, index=1)
             lga = st.selectbox("LGA Name", lga_name, index=2)
-            policy_start = st.date_input("Policy Start Date", datetime.now() - timedelta(days=90))
+            policy_start = st.date_input("Policy Start Date", datetime.now() - timedelta(days=90), min_value=datetime(2001, 1, 1))
             policy_end = st.date_input("Policy End Date", datetime.now() + timedelta(days=90))
             first_transaction = st.date_input("First Transaction Date", policy_start)
             
@@ -348,7 +349,7 @@ def main():
                     ).properties(
                         width=1250,
                         height=400,
-                        background='#6079AF'
+                        background='#7b67b3ff'
                     ).configure_axis(
                         labelAngle=0)
                         
