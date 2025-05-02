@@ -5,7 +5,7 @@ def custom_styling():
         """
         <style>
             .main {
-                background-image: linear-gradient(to bottom right, #1f1247ff, #7b67b3ff);
+                background-image: linear-gradient(to bottom right, #4c416bff, #ddd6f1ff);
             }
 
             .title {
@@ -15,12 +15,23 @@ def custom_styling():
                 color: black;
             }
             
+            .container {
+                background-color: #1f1247ff;
+                padding: 10px;
+                border-radius: 5px;
+                color: white;
+                height: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+       
             .subtitle {
                 font-family: "Open Sans", sans-serif;
                 font-weight: 300;
                 font-size: 35px;
                 color: white;
-                margin-top: -40px
             }
                 
             .subheader {
@@ -37,11 +48,16 @@ def custom_styling():
                 max-width: 500px;
             }
             
+            .stTabs {
+                margin: 20px;
+            }
+
+                   
             .stTabs [data-baseweb="tab"] {
                 font-family: "Open Sans", sans-serif;
                 font-size: 16px;
                 color:  white;
-                position : relative
+                position : relative;
             }
             
             .stTabs [data-baseweb="tab"]:hover {
@@ -77,7 +93,8 @@ def custom_styling():
             }
             
             .stSelectbox div[data-baseweb="select"] > div {
-                background-color: #77be5cff;
+                background-color: transparent;
+                border: 2px solid #77be5cff;
             }
             
             .stSelectbox div[data-baseweb="select"] .css-1uccc91-singleValue {
@@ -89,11 +106,12 @@ def custom_styling():
             }
             
             .stNumberInput input {
-                background-color: #77be5cff;
+                background-color: transparent;
+                border: 2px solid #77be5cff;
             }
             
             .stNumberInput input:focus {
-                background-color: #77be5cff;
+                background-color: transparent;
             }
             
             .stNumberInput > div > div > input[type=number] {
@@ -111,11 +129,13 @@ def custom_styling():
             }
 
             .stDateInput input {
-                background-color: #77be5cff;
+                background-color: transparent;
+                border: 2px solid #77be5cff;
+                border-radius: 10px;
             }
             
             .stDateInput input:focus {
-                background-color: #77be5cff;
+                background-color: transparent;
             }
             
             div[data-baseweb="radio"] > div {
@@ -126,20 +146,6 @@ def custom_styling():
                 height: 16px;
                 display: inline-block;
                 position: relative;
-            }
-    
-            /* Input field styling */
-            .stTextInput > div > div > input {
-                background-color: white;
-                color: #333;
-                border-radius: 5px;
-                border: 1px solid #ddd;
-                padding: 8px 12px;
-            }
-
-            .stTextInput > div > div > input:focus {
-                border-color: #FFC107;
-                box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.2);
             }
             
             .dataframe {
@@ -158,6 +164,16 @@ def custom_styling():
                 background-color: #77be5cff;
                 color: white;
             }
+            
+            div[data-testid="stMetric"],
+            div[data-testid="metric-container"] {{
+                background-color: {background_color};
+                border: {border_size_px}px solid {border_color};
+                padding: 5% 5% 5% 10%;
+                border-radius: {border_radius_px}px;
+                border-left: 0.5rem solid {border_left_color} !important;
+                {box_shadow_str}
+            }}
 
         </style>
         """,

@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from styling import custom_styling
 import altair as alt
+from streamlit_extras.metric_cards import style_metric_cards
 
 st.set_page_config(
     page_title="ClaimVision - Predictive Insurance Insights",
@@ -185,8 +186,14 @@ def get_feature_names_from_data(encoder, scaler):
 
 def main():
     
-    st.image("../images/final.png", width=300)
-    st.markdown('<p class="subtitle">Predict which customers will file insurance claims in the next 3 months</p>', unsafe_allow_html=True)
+    left_co, cent_co,last_co = st.columns(3)
+    with cent_co:
+        st.image("../images/beta.png", width=300)
+    
+    st.markdown(
+        '<div class="container"><p class="subtitle">Predict which customers will file insurance claims in the next 3 months</p></div>',
+        unsafe_allow_html=True
+    )
     
     model = load_or_create_model()
     encoder, scaler = load_or_create_encoders()
@@ -406,6 +413,7 @@ def main():
             col1.metric("F1 Score", f"{f1:.3f}")
             col2.metric("Precision", f"{precision:.3f}")
             col3.metric("Recall", f"{recall:.3f}")
+            style_metric_cards()
             
             st.write("### Confusion Matrix")
             conf_matrix = pd.DataFrame(cm, 
