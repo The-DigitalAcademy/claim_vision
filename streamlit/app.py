@@ -356,7 +356,7 @@ def main():
                     ).properties(
                         width=1250,
                         height=400,
-                        background='#7b67b3ff'
+                        background='#4c416bff'
                     ).configure_axis(
                         labelAngle=0)
                         

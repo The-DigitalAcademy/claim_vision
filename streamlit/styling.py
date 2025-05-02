@@ -156,7 +156,7 @@ def custom_styling():
             }
             
             .dataframe {
-                border: 2px solid #77be5cff;
+                border: 2px solid #1f1247ff;
                 border-collapse: collapse;
                 width: 30%;
             }
@@ -168,7 +168,7 @@ def custom_styling():
             }
             
             .dataframe th {
-                background-color: #77be5cff;
+                background-color: #1f1247ff;
                 color: white;
             }
             
