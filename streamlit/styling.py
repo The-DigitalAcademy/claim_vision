@@ -108,10 +108,16 @@ def custom_styling():
             .stNumberInput input {
                 background-color: #4c416bff;
                 border: 2px solid #77be5cff;
+                border-radius: 4px;
+                padding-top: 6px;
+                padding-bottom: 6px;
+                height: auto;
+                box-sizing: border-box;
             }
             
             .stNumberInput input:focus {
                 background-color: transparent;
+                outline: none;
             }
             
             .stNumberInput > div > div > input[type=number] {
@@ -132,6 +138,7 @@ def custom_styling():
                 background-color: #4c416bff;
                 border: 2px solid #77be5cff;
                 border-radius: 2px;
+                outline: none;
             }
             
             .stDateInput input:focus {
