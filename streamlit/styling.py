@@ -5,7 +5,7 @@ def custom_styling():
         """
         <style>
             .main {
-                background-image: linear-gradient(to bottom right, #4c416bff, #ddd6f1ff);
+                background-color: #4c416bff;
             }
 
             .title {
@@ -18,7 +18,7 @@ def custom_styling():
             .container {
                 background-color: #1f1247ff;
                 padding: 10px;
-                border-radius: 5px;
+                border-radius: 0px;
                 color: white;
                 height: 100px;
                 display: flex;
@@ -106,7 +106,7 @@ def custom_styling():
             }
             
             .stNumberInput input {
-                background-color: transparent;
+                background-color: #4c416bff;
                 border: 2px solid #77be5cff;
             }
             
@@ -129,9 +129,9 @@ def custom_styling():
             }
 
             .stDateInput input {
-                background-color: transparent;
+                background-color: #4c416bff;
                 border: 2px solid #77be5cff;
-                border-radius: 10px;
+                border-radius: 2px;
             }
             
             .stDateInput input:focus {

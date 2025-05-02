@@ -188,7 +188,7 @@ def main():
     
     left_co, cent_co,last_co = st.columns(3)
     with cent_co:
-        st.image("../images/beta.png", width=300)
+        st.image("../images/final.png", width=300)
     
     st.markdown(
         '<div class="container"><p class="subtitle">Predict which customers will file insurance claims in the next 3 months</p></div>',
