@@ -116,7 +116,7 @@ def custom_styling():
             }
             
             .stNumberInput input:focus {
-                background-color: transparent;
+                background-color: #4c416bff;
                 outline: none;
             }
             
@@ -142,7 +142,7 @@ def custom_styling():
             }
             
             .stDateInput input:focus {
-                background-color: transparent;
+                background-color: #4c416bff;
             }
             
             div[data-baseweb="radio"] > div {

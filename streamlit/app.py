@@ -363,9 +363,7 @@ def main():
                 st.altair_chart(chart)
                 
                 st.subheader("Top 10 Important Features")
-                
-                html = importance_df.head(10).to_html(classes='dataframe', index=False)
-                st.write(html, unsafe_allow_html=True)
+                st.dataframe(importance_df.head(15))
             else:
                 st.warning(f"Feature names count ({len(feature_names) if feature_names else 'Unknown'}) doesn't match feature importances count ({len(model.feature_importances_)})")
                 importance_df = pd.DataFrame({
@@ -419,9 +417,7 @@ def main():
             conf_matrix = pd.DataFrame(cm, 
                                       index=['Actual No Claim', 'Actual Claim'], 
                                       columns=['Predicted No Claim', 'Predicted Claim'])
-            
-            df2 = conf_matrix.to_html(classes='dataframe', index=True)
-            st.write(df2, unsafe_allow_html=True)
+            st.dataframe(conf_matrix)
             
         except Exception as e:
             st.warning(f"Could not calculate actual model metrics: {e}")
@@ -434,11 +430,9 @@ def main():
                 [278, 1177]
             ], index=['Actual No Claim', 'Actual Claim'], 
             columns=['Predicted No Claim', 'Predicted Claim'])
-            
-            df2 = confusion_matrix.to_html(classes='dataframe', index=True)
-            st.write(df2, unsafe_allow_html=True)
-
-        
+    
+            st.dataframe(confusion_matrix)
+     
         st.write(f"""
         ### Model Information:
         
