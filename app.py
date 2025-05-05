@@ -8,6 +8,12 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from styling import custom_styling
 import altair as alt
 
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+MODEL_DIR = os.path.join(BASE_DIR, 'models')
+IMAGE_DIR = os.path.join(BASE_DIR, 'images')
+
 st.set_page_config(
     page_title="ClaimVision - Predictive Insurance Insights",
     layout="wide",
@@ -18,13 +24,13 @@ custom_styling()
 
 @st.cache_resource
 def load_or_create_model():
-    model_path = 'claim_prediction_model.pkl'
+    model_path = os.path.join(MODEL_DIR, 'claim_prediction_model.pkl')
     if os.path.exists(model_path):
         model = joblib.load(model_path)
     else:
         st.warning("Model file not found. Please train the model first.")
         try:
-            train = pd.read_csv('../data/front_filled_train.csv')
+            train = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'))
             model = train_model(train)
             joblib.dump(model, model_path)
         except Exception as e:
@@ -34,8 +40,8 @@ def load_or_create_model():
 
 @st.cache_resource
 def load_or_create_encoders():
-    encoder_path = 'encoder.pkl'
-    scaler_path = 'scaler.pkl'
+    encoder_path = os.path.join(MODEL_DIR, 'encoder.pkl')
+    scaler_path = os.path.join(MODEL_DIR, 'scaler.pkl')
     
     if os.path.exists(encoder_path) and os.path.exists(scaler_path):
         encoder = joblib.load(encoder_path)
@@ -43,7 +49,7 @@ def load_or_create_encoders():
     else:
         st.warning("Encoder and/or scaler files not found. Creating new ones from training data.")
         try:
-            train = pd.read_csv('../data/front_filled_train.csv')
+            train = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'))
             
             categorical_columns = ['Gender', 'Car_Category', 'Subject_Car_Colour', 'Subject_Car_Make', 'LGA_Name', 'State', 'ProductName']
             encoder = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
@@ -153,7 +159,7 @@ def get_feature_names_from_data(encoder, scaler):
     """Get feature names by processing a small sample of data"""
     try:
       
-        train_sample = pd.read_csv('../data/front_filled_train.csv', nrows=5)
+        train_sample = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'), nrows=5)
         
      
         categorical_columns = ['Gender', 'Car_Category', 'Subject_Car_Colour', 'Subject_Car_Make', 'LGA_Name', 'State', 'ProductName']
@@ -185,7 +191,7 @@ def get_feature_names_from_data(encoder, scaler):
 
 def main():
     
-    st.image("../images/final.png", width=300)
+    st.image(os.path.join(IMAGE_DIR, 'final.png'), width=300)
     st.markdown('<p class="subtitle">Predict which customers will file insurance claims in the next 3 months</p>', unsafe_allow_html=True)
     
     model = load_or_create_model()
@@ -195,7 +201,7 @@ def main():
         st.error("Could not initialize the prediction system. Please check the data folder and try again.")
         st.stop()
         
-    train = pd.read_csv('../data/front_filled_train.csv')
+    train = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'))
        
     car_category = train['Car_Category'].unique()
     car_color = train['Subject_Car_Colour'].unique()
@@ -379,7 +385,7 @@ def main():
             """)
         
         try:
-            train_data = pd.read_csv('../data/front_filled_train.csv')
+            train_data = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'))
             
             train_data['Policy_Start_Date'] = pd.to_datetime(train_data['Policy_Start_Date'])
             train_data['Policy_End_Date'] = pd.to_datetime(train_data['Policy_End_Date'])
