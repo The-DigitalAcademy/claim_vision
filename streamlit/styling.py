@@ -85,6 +85,7 @@ def custom_styling():
                 border: none;
                 padding: 8px 25px;
                 border-radius: 25px;
+                height: 50px;
                 font-size: 16px;
                 font-weight: bold;
                 display: flex;
