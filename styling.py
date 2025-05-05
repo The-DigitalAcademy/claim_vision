@@ -5,7 +5,7 @@ def custom_styling():
         """
         <style>
             .main {
-                background-image: linear-gradient(to bottom right, #1f1247ff, #7b67b3ff);
+                background-color: red;
             }
 
             .title {
