@@ -3,11 +3,13 @@ import pandas as pd
 import numpy as np
 import joblib
 import os
+import base64
 from datetime import datetime, timedelta
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from styling import custom_styling
 import altair as alt
 from streamlit_extras.metric_cards import style_metric_cards
+from datetime import datetime
 
 st.set_page_config(
     page_title="ClaimVision - Predictive Insurance Insights",
@@ -185,15 +187,30 @@ def get_feature_names_from_data(encoder, scaler):
         return None
 
 def main():
+    def get_base64_image(image_path):
+        with open(image_path, "rb") as image_file:
+            return base64.b64encode(image_file.read()).decode()
+        
+    image_path = "../images/final.png"
     
-    left_co, cent_co,last_co = st.columns(3)
-    with cent_co:
-        st.image("../images/final.png", width=300)
-    
-    st.markdown(
-        '<div class="container"><p class="subtitle">Predict which customers will file insurance claims in the next 3 months</p></div>',
+    if os.path.exists(image_path):
+        logo_image = f"data:image/png;base64,{get_base64_image(image_path)}"
+        
+        st.markdown(
+        f"""
+        <div class="container" style="text-align: center;">
+            <div class="con-links">
+                <img src="{logo_image}" alt="Logo" width=300 style="display: flex; margin: 0 auto;">
+                <p class="subtitle" style="margin-top: -50px;">
+                    Predict which customers will file insurance claims in the next 3 months
+                </p>
+            </div>
+        </div>
+        """,
         unsafe_allow_html=True
     )
+    else:
+        st.error(f"Error: The image file '{image_path}' does not exist.")
     
     model = load_or_create_model()
     encoder, scaler = load_or_create_encoders()
@@ -219,12 +236,12 @@ def main():
         
         col1, col2 = st.columns(2)
         with col1:
-            gender = st.selectbox("Gender", ["Male", "Female"])
-            age = st.number_input("Age", min_value=18, max_value=100, value=30)
+            product_name = st.selectbox("Product Name", product_name)
             car_category = st.selectbox("Car Category", car_category)
             car_color = st.selectbox("Car Color", car_color)
             car_make = st.selectbox("Car Make", car_make)
-            product_name = st.radio("Product Name", product_name, help="Select one of the available options.", horizontal=True)
+            age = st.number_input("Age", min_value=18, max_value=100, value=30)
+            gender = st.selectbox("Gender", ["Male", "Female","Other"])
             
         with col2:
             no_pol = st.number_input("Number of Policies", min_value=1, max_value=10, value=1)
@@ -232,11 +249,13 @@ def main():
             lga = st.selectbox("LGA Name", lga_name, index=2)
             policy_start = st.date_input("Policy Start Date", datetime.now() - timedelta(days=90), min_value=datetime(2001, 1, 1))
             policy_end = st.date_input("Policy End Date", datetime.now() + timedelta(days=90))
-            first_transaction = st.date_input("First Transaction Date", policy_start)
-            
-        if st.button("Predict Claim Likelihood", type="primary"):
-            try:
-                data = {
+        
+        bp1, bp2, bp3 = st.columns([2, 2, 1])
+        with bp2:
+            st.subheader("")
+            if st.button("Predict Claim Likelihood", type="primary"):
+                try:
+                    data = {
                     'Gender': [gender],
                     'Age': [age],
                     'No_Pol': [no_pol],
@@ -249,40 +268,44 @@ def main():
                     'Policy_Start_Date': [pd.to_datetime(policy_start)],
                     'Policy_End_Date': [pd.to_datetime(policy_end)],
                     'First_Transaction_Date': [pd.to_datetime(first_transaction)]
-                }
+                    }
                 
-                df = pd.DataFrame(data)
+                    df = pd.DataFrame(data)
                 
-                processed_df, _ = preprocess_data(df, encoder, scaler)
+                    processed_df, _ = preprocess_data(df, encoder, scaler)
                 
-                prediction = model.predict(processed_df)[0]
-                prediction_proba = model.predict_proba(processed_df)[0]
+                    prediction = model.predict(processed_df)[0]
+                    prediction_proba = model.predict_proba(processed_df)[0]
                 
-                st.subheader("Prediction Result")
+                    st.subheader("Prediction Result")
                 
-                if prediction == 1:
-                    st.error(f"⚠️ This customer is likely to file a claim in the next 3 months")
-                    st.text(f"Claim probability: {prediction_proba[1]:.2%}")
-                else:
-                    st.success(f"✅ This customer is not likely to file a claim in the next 3 months")
-                    st.text(f"Claim probability: {prediction_proba[1]:.2%}")
+                    if prediction == 1:
+                        st.error(f"⚠️ This customer is likely to file a claim in the next 3 months")
+                        st.text(f"Claim probability: {prediction_proba[1]:.2%}")
+                    else:
+                        st.success(f"✅ This customer is not likely to file a claim in the next 3 months")
+                        st.text(f"Claim probability: {prediction_proba[1]:.2%}")
                 
-                
-            except Exception as e:
-                st.error(f"An error occurred during prediction: {e}")
-                st.info("Please check that your input data is valid and try again.")
+                except Exception as e:
+                    st.error(f"An error occurred during prediction: {e}")
+                    st.info("Please check that your input data is valid and try again.")
+    
+        
                 
     with tab2:
-        st.subheader("Batch Prediction")
+        st.subheader("")
+        st.markdown('<p class="subheader">Batch Prediction</p>', unsafe_allow_html=True)
         
-        st.write("Upload a CSV file with customer data to predict claims in batch")
+        st.write("")
+        st.markdown('<p class="text">Upload a CSV file with customer data to predict claims in batch</p>', unsafe_allow_html=True)
         uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
         
         if uploaded_file is not None:
             try:
                 df = pd.read_csv(uploaded_file)
                 
-                st.subheader("Data Preview")
+                st.subheader("")
+                st.markdown('<p class="subheader">Data Preview</p>', unsafe_allow_html=True)
                 st.dataframe(df.head())
                 
                 if st.button("Run Batch Prediction"):
@@ -336,10 +359,11 @@ def main():
                 st.info("Please check that your file format is correct and contains all required columns.")
     
     with tab3:
-        st.subheader("Model Insights")
+        st.subheader("")
+        st.markdown('<p class="subheader">Model Insights</p>', unsafe_allow_html=True)
         
         if hasattr(model, 'feature_importances_'):
-            st.subheader("Feature Importance")
+            st.markdown('<p class="text">Feature Importance</p>', unsafe_allow_html=True)
             
             # Get feature names directly from preprocessing a sample
             feature_names = get_feature_names_from_data(encoder, scaler)
@@ -356,13 +380,15 @@ def main():
                     ).properties(
                         width=1250,
                         height=400,
-                        background='#4c416bff'
+                        background='transparent'
                     ).configure_axis(
+                        labelColor='black',
+                        titleColor='black',
                         labelAngle=0)
                         
                 st.altair_chart(chart)
                 
-                st.subheader("Top 10 Important Features")
+                st.markdown('<p class="text">Top 10 Important Features</p>', unsafe_allow_html=True)
                 st.dataframe(importance_df.head(15))
             else:
                 st.warning(f"Feature names count ({len(feature_names) if feature_names else 'Unknown'}) doesn't match feature importances count ({len(model.feature_importances_)})")
@@ -372,16 +398,20 @@ def main():
                 }).sort_values('Importance', ascending=False)
                 
                 st.bar_chart(importance_df.set_index('Feature').head(10))
-            
-            st.write("""
-            ### Key Factors Affecting Claims:
-            
-            1. **Policy Duration**: Longer policies may have different claim patterns
-            2. **Customer Tenure**: How long the customer has been with the company
-            3. **Age**: Customer's age is a significant predictor of claim likelihood
-            4. **Recency**: How recently a policy ended affects claim probability
-            5. **Number of Policies**: Customers with multiple policies show different claim behavior
-            """)
+                
+            st.markdown("""
+                <div class="text" style="color: black; font-size: 16px;">
+                    Key Factors Affecting Claims:
+                    <br>
+                    <br>
+                    <strong>Policy Duration</strong>: Longer policies may have different claim patterns<br>
+                    <strong>Customer Tenure</strong>: How long the customer has been with the company<br>
+                    <strong>Age</strong>: Customer's age is a significant predictor of claim likelihood<br>
+                    <strong>Recency</strong>: How recently a policy ended affects claim probability<br>
+                    <strong>Number of Policies</strong>: Customers with multiple policies show different claim behavior<br>
+                    <br>
+                    </div>
+                """, unsafe_allow_html=True)
         
         try:
             train_data = pd.read_csv('../data/front_filled_train.csv')
@@ -405,7 +435,7 @@ def main():
             recall = recall_score(y_true, y_pred)
             cm = confusion_matrix(y_true, y_pred)
             
-            st.subheader("Model Performance")
+            st.markdown('<p class="text">Model Performance</p>', unsafe_allow_html=True)
             
             col1, col2, col3 = st.columns(3)
             col1.metric("F1 Score", f"{f1:.3f}")
@@ -413,7 +443,7 @@ def main():
             col3.metric("Recall", f"{recall:.3f}")
             style_metric_cards()
             
-            st.write("### Confusion Matrix")
+            st.markdown('<p class="text">Confusion Matrix</p>', unsafe_allow_html=True)
             conf_matrix = pd.DataFrame(cm, 
                                       index=['Actual No Claim', 'Actual Claim'], 
                                       columns=['Predicted No Claim', 'Predicted Claim'])
@@ -422,9 +452,9 @@ def main():
         except Exception as e:
             st.warning(f"Could not calculate actual model metrics: {e}")
             
-            st.subheader("Model Performance")
+            st.markdown('<p class="text">Model Performance</p>', unsafe_allow_html=True)
     
-            st.write("### Confusion Matrix")
+            st.markdown('<p class="text">Confusion Matrix</p>', unsafe_allow_html=True)
             confusion_matrix = pd.DataFrame([
                 [10602, 22],
                 [278, 1177]
@@ -432,17 +462,18 @@ def main():
             columns=['Predicted No Claim', 'Predicted Claim'])
     
             st.dataframe(confusion_matrix)
-     
-        st.write(f"""
-        ### Model Information:
-        
-        - **Algorithm**: Decision Tree Classifier
-        - **Training Data**: Customer records from historical data
-        - **Target Variable**: Whether a customer filed a claim within 3 months
-        - **Last Updated**: {datetime.now().strftime("%B %Y")}
-        
-        This model helps insurance companies predict which customers are likely to file claims in the next three months, enabling better resource allocation and customer service preparation.
-        """)
+            
+        st.markdown(f"""
+            <div class="text" style="color: black; font-size: 16px;">
+                Model Information:
+                <br>
+                <br>
+                <strong>Algorithm</strong>: Decision Tree Classifier<br>
+                <strong>Training Data</strong>: Customer records from historical data<br>
+                <strong>Target Variable</strong>: Whether a customer filed a claim within 3 months<br>
+                <strong>Last Updated</strong>: {datetime.now().strftime("%B %Y")}<br>
+            </div>
+        """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()

@@ -5,7 +5,7 @@ def custom_styling():
         """
         <style>
             .main {
-                background-color: #4c416bff;
+                background-color: white;
             }
 
             .title {
@@ -20,11 +20,20 @@ def custom_styling():
                 padding: 10px;
                 border-radius: 0px;
                 color: white;
-                height: 100px;
+                height: 250px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 text-align: center;
+                margin-top: -55px;
+            }
+            
+            .con-links {
+                display: flex;
+                flex-direction: column;
+                justify-content: center
+                align-items: center;
+                gap: 20px;
             }
        
             .subtitle {
@@ -37,26 +46,25 @@ def custom_styling():
             .subheader {
                 font-family: "Open Sans", sans-serif;
                 font-size: 25px;
-                color: white;
+                color: black;
                 margin-top: -50px
             }
 
             .text {
                 font-family: "Open Sans", sans-serif;
                 font-size: 16px;
-                color: white;
+                color: black;
                 max-width: 500px;
             }
             
             .stTabs {
                 margin: 20px;
             }
-
                    
             .stTabs [data-baseweb="tab"] {
                 font-family: "Open Sans", sans-serif;
                 font-size: 16px;
-                color:  white;
+                color:  black;
                 position : relative;
             }
             
@@ -95,6 +103,12 @@ def custom_styling():
             .stSelectbox div[data-baseweb="select"] > div {
                 background-color: transparent;
                 border: 2px solid #77be5cff;
+                color: black;
+            }
+            
+            label {
+                color: black !important;
+                font-weight: bold
             }
             
             .stSelectbox div[data-baseweb="select"] .css-1uccc91-singleValue {
@@ -106,17 +120,18 @@ def custom_styling():
             }
             
             .stNumberInput input {
-                background-color: #4c416bff;
+                background-color: white;
                 border: 2px solid #77be5cff;
                 border-radius: 4px;
                 padding-top: 6px;
                 padding-bottom: 6px;
                 height: auto;
                 box-sizing: border-box;
+                color: black;
             }
             
             .stNumberInput input:focus {
-                background-color: #4c416bff;
+                background-color: white;
                 outline: none;
             }
             
@@ -135,15 +150,13 @@ def custom_styling():
             }
 
             .stDateInput input {
-                background-color: #4c416bff;
+                background-color: white;
                 border: 2px solid #77be5cff;
                 border-radius: 2px;
                 outline: none;
+                color: black;
             }
-            
-            .stDateInput input:focus {
-                background-color: #4c416bff;
-            }
+
             
             div[data-baseweb="radio"] > div {
                 background-color: white;
@@ -155,6 +168,11 @@ def custom_styling():
                 position: relative;
             }
             
+            .stRadio > div div {
+                color: black !important;
+                font-weight: normal;
+            }
+
             .dataframe {
                 border: 2px solid #1f1247ff;
                 border-collapse: collapse;
@@ -172,17 +190,21 @@ def custom_styling():
                 color: white;
             }
             
-            div[data-testid="stMetric"],
-            div[data-testid="metric-container"] {{
-                background-color: {background_color};
-                border: {border_size_px}px solid {border_color};
-                padding: 5% 5% 5% 10%;
-                border-radius: {border_radius_px}px;
-                border-left: 0.5rem solid {border_left_color} !important;
-                {box_shadow_str}
-            }}
+            div[data-testid="stMetricValue"] {
+                color: black !important;
+                font-size: 30px !important;
+            }        
 
         </style>
         """,
         unsafe_allow_html=True,
     )
+
+hide_fullscreen = """
+        <style>
+        button[title="View fullscreen"] {
+            visibility: hidden;
+        }
+        </style>
+    """
+st.markdown(hide_fullscreen, unsafe_allow_html=True)
