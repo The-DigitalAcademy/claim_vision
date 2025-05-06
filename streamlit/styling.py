@@ -4,9 +4,11 @@ def custom_styling():
     st.markdown(
         """
         <style>
-            .main {
-                background-image: linear-gradient(to bottom right, #1f1247ff, #7b67b3ff);
+            .stApp {
+                background-color: white;
+                color: black;
             }
+
 
             .title {
                 font-family: "Open Sans", sans-serif;
@@ -19,28 +21,59 @@ def custom_styling():
                 font-family: "Open Sans", sans-serif;
                 font-weight: 300;
                 font-size: 35px;
-                color: white;
+                color: black;
                 margin-top: -40px
             }
                 
             .subheader {
                 font-family: "Open Sans", sans-serif;
                 font-size: 25px;
-                color: white;
+                color: black;
                 margin-top: -50px
             }
 
             .text {
                 font-family: "Open Sans", sans-serif;
                 font-size: 16px;
-                color: white;
+                color: black;
                 max-width: 500px;
             }
+                        /* Make Streamlit container full-width */
+            .hero-container {
+                width: 100vw;
+                margin-left: -5.5rem; 
+                margin-right: -5.5rem; 
+                margin-top: -5rem; 
+                background-image: linear-gradient(to bottom right, #1f1247ff, #7b67b3ff);
+                padding: 40px 20px;
+                border-radius: 0; 
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .hero-container img {
+                width: 300px;
+                max-width: 90%;
+            }
+
+            .hero-container p {
+                font-family: "Open Sans", sans-serif;
+                font-weight: 300;
+                font-size: 24px;
+                color: white;
+                margin-top: 20px;
+            }
+
+
+
             
             .stTabs [data-baseweb="tab"] {
                 font-family: "Open Sans", sans-serif;
                 font-size: 16px;
-                color:  white;
+                color:  black;
                 position : relative
             }
             
@@ -61,6 +94,7 @@ def custom_styling():
                 border: none;
                 padding: 8px 25px;
                 border-radius: 25px;
+                border-color: #1f1247ff;
                 font-size: 16px;
                 font-weight: bold;
                 display: flex;
@@ -90,6 +124,7 @@ def custom_styling():
             
             .stNumberInput input {
                 background-color: #77be5cff;
+                border-color: red;
             }
             
             .stNumberInput input:focus {
@@ -156,7 +191,7 @@ def custom_styling():
             
             .dataframe th {
                 background-color: #77be5cff;
-                color: white;
+                color: black;
             }
 
         </style>
