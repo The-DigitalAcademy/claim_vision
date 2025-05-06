@@ -31,6 +31,7 @@ def custom_styling():
                 color: black;
                 margin-top: -50px
             }
+           
 
             .text {
                 font-family: "Open Sans", sans-serif;
@@ -109,59 +110,62 @@ def custom_styling():
                 background-color: #77be5cff;
                 color: white;
             }
-            
+                        /* Selectbox Styling */
             .stSelectbox div[data-baseweb="select"] > div {
-                background-color: #77be5cff;
-            }
-            
-            .stSelectbox div[data-baseweb="select"] .css-1uccc91-singleValue {
-                background-color: #77be5cff;
-            }
-            
-            .stSelectbox div[data-baseweb="select"] .css-1n7v3ny-option {
-                background-color: #77be5cff;
-            }
-            
-            .stNumberInput input {
-                background-color: #77be5cff;
-                border-color: red;
-            }
-            
-            .stNumberInput input:focus {
-                background-color: #77be5cff;
-            }
-            
-            .stNumberInput > div > div > input[type=number] {
-                border-radius: 0;
-                padding: 0;
-                margin: 0;
-            }
-            
-            .stNumberInput > div > div > button:first-of-type {
-                background-color: #77be5cff;
-            }
-            
-            .stNumberInput > div > div > button:last-of-type {
-                background-color: #77be5cff;
+                background-color: white !important;
+                border: 2px solid #77be5cff !important;
+                color: black;
             }
 
-            .stDateInput input {
-                background-color: #77be5cff;
+            .stSelectbox .css-1uccc91-singleValue {
+                background-color: transparent !important;
+                color: black !important;
             }
+
+            .stSelectbox .css-1n7v3ny-option {
+                background-color: white !important;
+                color: black !important;
+            }
+                        
+            .stNumberInput input[type="number"] {
+                background-color: white !important;
+                border: 2px solid #77be5cff !important;
+                color: black !important;
+                border-radius: 5px !important;
+                padding: 6px 10px !important;
+            }
+
+            .stNumberInput input[type="number"]:focus {
+                border: 2px solid #77be5cff !important;
+                outline: none !important;
+                box-shadow: 0 0 0 3px rgba(119, 190, 92, 0.3) !important;
+            }
+
+           
+            .stNumberInput button {
+                background-color: #77be5cff !important;
+                color: white !important;
+                border: none !important;
+            }
+
             
-            .stDateInput input:focus {
-                background-color: #77be5cff;
+            .stDateInput input[type="text"] {
+                background-color: white !important;
+                border: 2px solid #77be5cff !important;
+                color: black !important;
+                border-radius: 5px !important;
+                padding: 6px 10px !important;
             }
+
             
-            div[data-baseweb="radio"] > div {
-                background-color: white;
-                border: 1px solid #000;
-                border-radius: 50%;
-                width: 16px;
-                height: 16px;
-                display: inline-block;
-                position: relative;
+            .stDateInput input[type="text"]:focus {
+                border: 2px solid #77be5cff !important;
+                outline: none !important;
+                box-shadow: 0 0 0 3px rgba(119, 190, 92, 0.3) !important;
             }
+
+            
+  
     
             /* Input field styling */
             .stTextInput > div > div > input {
@@ -174,6 +178,7 @@ def custom_styling():
 
             .stTextInput > div > div > input:focus {
                 border-color: #FFC107;
+                color: red;
                 box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.2);
             }
             
