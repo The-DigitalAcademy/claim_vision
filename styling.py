@@ -4,9 +4,7 @@ def custom_styling():
     st.markdown(
         """
         <style>
-            .main {
-                background-color: red;
-            }
+           
 
             .title {
                 font-family: "Open Sans", sans-serif;

@@ -111,9 +111,6 @@ def train_model(train_data):
     model = DecisionTreeClassifier(random_state=42)
     model.fit(X, y)
     
-    joblib.dump(encoder, 'encoder.pkl')
-    joblib.dump(scaler, 'scaler.pkl')
-    
     return model
 
 def preprocess_data(df, encoder, scaler):
