@@ -363,9 +363,13 @@ def main():
                     ).properties(
                         width=1250,
                         height=400,
-                        background='#7b67b3ff'
+                        background='transparent'
                     ).configure_axis(
-                        labelAngle=0)
+                        labelAngle=0,
+                        labelColor='black',
+                        titleColor='black'
+                        )
+                    
                         
                 st.altair_chart(chart)
                 
