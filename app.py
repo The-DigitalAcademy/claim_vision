@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from styling import custom_styling
 import altair as alt
+import base64
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +21,18 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+def get_base64_image(image_path):
+    with open(image_path, "rb") as img_file:
+        encoded = base64.b64encode(img_file.read()).decode()
+    return f"data:image/png;base64,{encoded}"
+
 custom_styling()
+
+image_path = os.path.join(IMAGE_DIR, 'final.png')
+
+# Read and encode the image in base64
+with open(image_path, "rb") as img_file:
+    image_base64 = base64.b64encode(img_file.read()).decode()
 
 @st.cache_resource
 def load_or_create_model():
@@ -188,8 +200,15 @@ def get_feature_names_from_data(encoder, scaler):
 
 def main():
     
-    st.image(os.path.join(IMAGE_DIR, 'final.png'), width=300)
-    st.markdown('<p class="subtitle">Predict which customers will file insurance claims in the next 3 months</p>', unsafe_allow_html=True)
+    st.markdown(
+    f"""
+    <div class="hero-container">
+        <img src="data:image/png;base64,{image_base64}" alt="Hero Image" />
+        <p>Predict which customers will file insurance claims in the next 3 months</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+    )
     
     model = load_or_create_model()
     encoder, scaler = load_or_create_encoders()
