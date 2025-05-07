@@ -183,9 +183,8 @@ def custom_styling():
             }
             
             .dataframe {
-                border: 2px solid #77be5cff;
-                border-collapse: collapse;
-                width: 30%;
+               
+                width: 40%;
             }
             
             .dataframe th, .dataframe td {
@@ -195,8 +194,8 @@ def custom_styling():
             }
             
             .dataframe th {
-                background-color: #77be5cff;
-                color: black;
+                background-color: #7b67b3ff;
+                color: white;
             }
 
         </style>

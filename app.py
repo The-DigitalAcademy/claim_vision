@@ -8,6 +8,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from styling import custom_styling
 import altair as alt
 import base64
+from streamlit_extras.metric_cards import style_metric_cards
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -365,7 +366,9 @@ def main():
                     'Importance': model.feature_importances_
                     }).sort_values('Importance', ascending=False).head(10)
                 
-                chart = alt.Chart(importance_df.reset_index()).mark_bar().encode(
+                chart = alt.Chart(importance_df.reset_index()).mark_bar(
+                    color='#7b67b3ff'
+                    ).encode(
                     x='Feature',
                     y='Importance'
                     ).properties(
@@ -430,6 +433,7 @@ def main():
             col1.metric("F1 Score", f"{f1:.3f}")
             col2.metric("Precision", f"{precision:.3f}")
             col3.metric("Recall", f"{recall:.3f}")
+            style_metric_cards()
             
             st.write("### Confusion Matrix")
             conf_matrix = pd.DataFrame(cm, 
