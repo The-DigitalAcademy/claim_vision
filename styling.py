@@ -69,13 +69,18 @@ def custom_styling():
             }
 
 
-
+             .stTabs {
+                 
+                 margin-top: 20px;
+             }
             
             .stTabs [data-baseweb="tab"] {
                 font-family: "Open Sans", sans-serif;
                 font-size: 16px;
                 color:  black;
                 position : relative
+            
+               
             }
             
             .stTabs [data-baseweb="tab"]:hover {

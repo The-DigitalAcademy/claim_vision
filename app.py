@@ -439,7 +439,7 @@ def main():
             col1.metric("F1 Score", f"{f1:.3f}")
             col2.metric("Precision", f"{precision:.3f}")
             col3.metric("Recall", f"{recall:.3f}")
-            style_metric_cards()
+            style_metric_cards(border_left_color="#7b67b3ff")
             
             st.write("### Confusion Matrix")
             conf_matrix = pd.DataFrame(cm, 
