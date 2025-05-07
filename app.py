@@ -239,7 +239,7 @@ def main():
             car_category = st.selectbox("Car Category", car_category)
             car_color = st.selectbox("Car Color", car_color)
             car_make = st.selectbox("Car Make", car_make)
-            product_name = st.radio("Product Name", product_name, help="Select one of the available options.", horizontal=True)
+            product_name = st.selectbox("Product Name", product_name)
             
         with col2:
             no_pol = st.number_input("Number of Policies", min_value=1, max_value=10, value=1)
@@ -371,7 +371,7 @@ def main():
                     ).properties(
                         width=1250,
                         height=400,
-                        background='#7b67b3ff'
+                        background='transparent'
                     ).configure_axis(
                         labelAngle=0)
                         
