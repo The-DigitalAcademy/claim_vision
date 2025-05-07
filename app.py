@@ -7,6 +7,14 @@ from datetime import datetime, timedelta
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from styling import custom_styling
 import altair as alt
+import base64
+from streamlit_extras.metric_cards import style_metric_cards
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+MODEL_DIR = os.path.join(BASE_DIR, 'models')
+IMAGE_DIR = os.path.join(BASE_DIR, 'images')
 
 st.set_page_config(
     page_title="ClaimVision - Predictive Insurance Insights",
@@ -14,17 +22,28 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+def get_base64_image(image_path):
+    with open(image_path, "rb") as img_file:
+        encoded = base64.b64encode(img_file.read()).decode()
+    return f"data:image/png;base64,{encoded}"
+
 custom_styling()
+
+image_path = os.path.join(IMAGE_DIR, 'final.png')
+
+# Read and encode the image in base64
+with open(image_path, "rb") as img_file:
+    image_base64 = base64.b64encode(img_file.read()).decode()
 
 @st.cache_resource
 def load_or_create_model():
-    model_path = 'claim_prediction_model.pkl'
+    model_path = os.path.join(MODEL_DIR, 'claim_prediction_model.pkl')
     if os.path.exists(model_path):
         model = joblib.load(model_path)
     else:
         st.warning("Model file not found. Please train the model first.")
         try:
-            train = pd.read_csv('../data/front_filled_train.csv')
+            train = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'))
             model = train_model(train)
             joblib.dump(model, model_path)
         except Exception as e:
@@ -34,8 +53,8 @@ def load_or_create_model():
 
 @st.cache_resource
 def load_or_create_encoders():
-    encoder_path = 'encoder.pkl'
-    scaler_path = 'scaler.pkl'
+    encoder_path = os.path.join(MODEL_DIR, 'encoder.pkl')
+    scaler_path = os.path.join(MODEL_DIR, 'scaler.pkl')
     
     if os.path.exists(encoder_path) and os.path.exists(scaler_path):
         encoder = joblib.load(encoder_path)
@@ -43,7 +62,7 @@ def load_or_create_encoders():
     else:
         st.warning("Encoder and/or scaler files not found. Creating new ones from training data.")
         try:
-            train = pd.read_csv('../data/front_filled_train.csv')
+            train = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'))
             
             categorical_columns = ['Gender', 'Car_Category', 'Subject_Car_Colour', 'Subject_Car_Make', 'LGA_Name', 'State', 'ProductName']
             encoder = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
@@ -105,9 +124,6 @@ def train_model(train_data):
     model = DecisionTreeClassifier(random_state=42)
     model.fit(X, y)
     
-    joblib.dump(encoder, 'encoder.pkl')
-    joblib.dump(scaler, 'scaler.pkl')
-    
     return model
 
 def preprocess_data(df, encoder, scaler):
@@ -153,7 +169,7 @@ def get_feature_names_from_data(encoder, scaler):
     """Get feature names by processing a small sample of data"""
     try:
       
-        train_sample = pd.read_csv('../data/front_filled_train.csv', nrows=5)
+        train_sample = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'), nrows=5)
         
      
         categorical_columns = ['Gender', 'Car_Category', 'Subject_Car_Colour', 'Subject_Car_Make', 'LGA_Name', 'State', 'ProductName']
@@ -185,8 +201,15 @@ def get_feature_names_from_data(encoder, scaler):
 
 def main():
     
-    st.image("../images/final.png", width=300)
-    st.markdown('<p class="subtitle">Predict which customers will file insurance claims in the next 3 months</p>', unsafe_allow_html=True)
+    st.markdown(
+    f"""
+    <div class="hero-container">
+        <img src="data:image/png;base64,{image_base64}" alt="Hero Image" />
+        <p>Predict which customers will file insurance claims in the next 3 months</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+    )
     
     model = load_or_create_model()
     encoder, scaler = load_or_create_encoders()
@@ -195,7 +218,7 @@ def main():
         st.error("Could not initialize the prediction system. Please check the data folder and try again.")
         st.stop()
         
-    train = pd.read_csv('../data/front_filled_train.csv')
+    train = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'))
        
     car_category = train['Car_Category'].unique()
     car_color = train['Subject_Car_Colour'].unique()
@@ -217,7 +240,7 @@ def main():
             car_category = st.selectbox("Car Category", car_category)
             car_color = st.selectbox("Car Color", car_color)
             car_make = st.selectbox("Car Make", car_make)
-            product_name = st.radio("Product Name", product_name, help="Select one of the available options.", horizontal=True)
+            product_name = st.selectbox("Product Name", product_name)
             
         with col2:
             no_pol = st.number_input("Number of Policies", min_value=1, max_value=10, value=1)
@@ -343,14 +366,18 @@ def main():
                     'Importance': model.feature_importances_
                     }).sort_values('Importance', ascending=False).head(10)
                 
-                chart = alt.Chart(importance_df.reset_index()).mark_bar().encode(
+                chart = alt.Chart(importance_df.reset_index()).mark_bar(
+                    color='#7b67b3ff'
+                    ).encode(
                     x='Feature',
                     y='Importance'
                     ).properties(
                         width=1250,
                         height=400,
-                        background='#7b67b3ff'
+                        background='transparent'
                     ).configure_axis(
+                        labelColor='black',
+                        titleColor='black',
                         labelAngle=0)
                         
                 st.altair_chart(chart)
@@ -379,7 +406,7 @@ def main():
             """)
         
         try:
-            train_data = pd.read_csv('../data/front_filled_train.csv')
+            train_data = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'))
             
             train_data['Policy_Start_Date'] = pd.to_datetime(train_data['Policy_Start_Date'])
             train_data['Policy_End_Date'] = pd.to_datetime(train_data['Policy_End_Date'])
@@ -406,6 +433,7 @@ def main():
             col1.metric("F1 Score", f"{f1:.3f}")
             col2.metric("Precision", f"{precision:.3f}")
             col3.metric("Recall", f"{recall:.3f}")
+            style_metric_cards()
             
             st.write("### Confusion Matrix")
             conf_matrix = pd.DataFrame(cm, 
