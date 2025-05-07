@@ -1,4 +1,11 @@
 import streamlit as st
+
+st.set_page_config(
+    page_title="ClaimVision - Predictive Insurance Insights",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 import pandas as pd
 import numpy as np
 import joblib
@@ -16,11 +23,10 @@ DATA_DIR = os.path.join(BASE_DIR, 'data')
 MODEL_DIR = os.path.join(BASE_DIR, 'models')
 IMAGE_DIR = os.path.join(BASE_DIR, 'images')
 
-st.set_page_config(
-    page_title="ClaimVision - Predictive Insurance Insights",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+
+
+
+
 
 def get_base64_image(image_path):
     with open(image_path, "rb") as img_file:
