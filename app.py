@@ -373,6 +373,8 @@ def main():
                         height=400,
                         background='transparent'
                     ).configure_axis(
+                        labelColor='black',
+                        titleColor='black',
                         labelAngle=0)
                         
                 st.altair_chart(chart)
