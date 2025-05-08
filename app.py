@@ -236,8 +236,8 @@ def main():
     tab1, tab2, tab3 = st.tabs(["Individual Prediction", "Batch Prediction", "Model Insights"])
     
     with tab1:
-        st.subheader("")
-        st.markdown('<p class="subheader">Individual Customer Prediction</p>', unsafe_allow_html=True)
+        st.subheader("Individual Customer Prediction")
+
         
         col1, col2 = st.columns(2)
         with col1:

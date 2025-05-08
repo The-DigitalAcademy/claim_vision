@@ -24,13 +24,7 @@ def custom_styling():
                 color: black;
                 margin-top: -40px
             }
-                
-            .subheader {
-                font-family: "Open Sans", sans-serif;
-                font-size: 25px;
-                color: black;
-                margin-top: -50px
-            }
+    
            
 
             .text {
