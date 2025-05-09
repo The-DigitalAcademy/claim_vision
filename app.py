@@ -49,7 +49,7 @@ def load_or_create_model():
     else:
         st.warning("Model file not found. Please train the model first.")
         try:
-            train = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'))
+            train = pd.read_csv(os.path.join(DATA_DIR, 'frontfilled_train.csv'))
             model = train_model(train)
             joblib.dump(model, model_path)
         except Exception as e:
@@ -68,7 +68,7 @@ def load_or_create_encoders():
     else:
         st.warning("Encoder and/or scaler files not found. Creating new ones from training data.")
         try:
-            train = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'))
+            train = pd.read_csv(os.path.join(DATA_DIR, 'frontfilled_train.csv'))
             
             categorical_columns = ['Gender', 'Car_Category', 'Subject_Car_Colour', 'Subject_Car_Make', 'LGA_Name', 'State', 'ProductName']
             encoder = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
@@ -175,7 +175,7 @@ def get_feature_names_from_data(encoder, scaler):
     """Get feature names by processing a small sample of data"""
     try:
       
-        train_sample = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'), nrows=5)
+        train_sample = pd.read_csv(os.path.join(DATA_DIR, 'frontfilled_train.csv'), nrows=5)
         
      
         categorical_columns = ['Gender', 'Car_Category', 'Subject_Car_Colour', 'Subject_Car_Make', 'LGA_Name', 'State', 'ProductName']
@@ -224,7 +224,7 @@ def main():
         st.error("Could not initialize the prediction system. Please check the data folder and try again.")
         st.stop()
         
-    train = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'))
+    train = pd.read_csv(os.path.join(DATA_DIR, 'frontfilled_train.csv'))
        
     car_category = train['Car_Category'].unique()
     car_color = train['Subject_Car_Colour'].unique()
@@ -412,7 +412,7 @@ def main():
             """)
         
         try:
-            train_data = pd.read_csv(os.path.join(DATA_DIR, 'front_filled_train.csv'))
+            train_data = pd.read_csv(os.path.join(DATA_DIR, 'frontfilled_train.csv'))
             
             train_data['Policy_Start_Date'] = pd.to_datetime(train_data['Policy_Start_Date'])
             train_data['Policy_End_Date'] = pd.to_datetime(train_data['Policy_End_Date'])
