@@ -21,6 +21,9 @@ The F1 Score was used as the primary evaluation metric to balance precision and 
 * Pandas & NumPy – for data manipulation
 * Scikit-learn & XGBoost – for building and tuning classification models
 * Matplotlib & Seaborn – for data visualization and exploratory analysis
+* Joblib - for loading trained machine learning models
+* Altair - for creating interactive charts
+* Base64 - for embedding images or files in HTML or JSON
 
 ## Target Market:
 * Claims Management Team: To forecast and manage claim volumes in advance, ensuring optimal resource planning.
