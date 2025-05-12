@@ -263,7 +263,7 @@ def main():
         st.error("Could not initialize the prediction system. Please check the data folder and try again.")
         st.stop()
         
-    train = pd.read_csv(os.path.join(DATA_DIR, 'frontfilled_train.csv'))
+    train = pd.read_csv(os.path.join(DATA_DIR, 'backfilled_train.csv'))
        
     car_category = train['Car_Category'].unique()
     car_color = train['Subject_Car_Colour'].unique()
@@ -280,7 +280,7 @@ def main():
         
         col1, col2 = st.columns(2)
         with col1:
-            gender = st.selectbox("Gender", ["Male", "Female"])
+            gender = st.selectbox("Gender", ["Male", "Female", "Entity", "Other"])
             age = st.number_input("Age", min_value=18, max_value=100, value=30)
             car_category = st.selectbox("Car Category", car_category)
             car_color = st.selectbox("Car Color", car_color)
