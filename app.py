@@ -167,7 +167,7 @@ def preprocess_data(df, encoder, scaler):
     if 'Age' in df.columns:
         df['Age'] = df['Age'].apply(clean_age)
         age_mean = df['Age'].mean()
-        df['Age'] = df['Age'].filla(age_mean)
+        df['Age'] = df['Age'].fillna(age_mean)
     
     # Create date-based features
     df['Policy_Duration'] = (df['Policy_End_Date'] - df['Policy_Start_Date']).dt.days
