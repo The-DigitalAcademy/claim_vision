@@ -146,19 +146,22 @@ def custom_styling():
                 color: white !important;
                 border: none !important;
             }
-
+            
+            .st-e7 {
+               padding-right: 0;
+            }
             
             .stDateInput input[type="text"] {
                 background-color: white !important;
                 border: 2px solid #77be5cff !important;
                 color: black !important;
                 border-radius: 5px !important;
-                padding: 6px 10px !important;
+               
             }
 
             
             .stDateInput input[type="text"]:focus {
-                border: 2px solid #77be5cff !important;
+                border: 1px solid #77be5cff !important;
                 outline: none !important;
                 box-shadow: 0 0 0 3px rgba(119, 190, 92, 0.3) !important;
             }
