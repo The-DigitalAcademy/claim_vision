@@ -112,7 +112,7 @@ def train_model(train_data):
     
     train_data['Age'] = train_data['Age'].apply(clean_age)
     age_mean = train_data['Age'].mean()
-    train_data['Age'].fillna(age_mean, inplace=True)
+    train_data['Age'] =  train_data['Age'].fillna(age_mean)
     
     # Create date-based features
     train_data['Policy_Duration'] = (train_data['Policy_End_Date'] - train_data['Policy_Start_Date']).dt.days
