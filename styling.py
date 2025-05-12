@@ -147,16 +147,17 @@ def custom_styling():
                 border: none !important;
             }
             
-            .st-e7 {
+              .st-e7 {
                padding-right: 0;
             }
+
             
             .stDateInput input[type="text"] {
                 background-color: white !important;
                 border: 2px solid #77be5cff !important;
                 color: black !important;
                 border-radius: 5px !important;
-               
+                padding: 6px 10px !important;
             }
 
             
