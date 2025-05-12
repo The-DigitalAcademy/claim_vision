@@ -162,27 +162,8 @@ def custom_styling():
                 outline: none !important;
                 box-shadow: 0 0 0 3px rgba(119, 190, 92, 0.3) !important;
             }
-
-            
-  
-    
-            /* Input field styling */
-            .stTextInput > div > div > input {
-                background-color: white;
-                color: #333;
-                border-radius: 5px;
-                border: 1px solid #ddd;
-                padding: 8px 12px;
-            }
-
-            .stTextInput > div > div > input:focus {
-                border-color: #FFC107;
-                color: red;
-                box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.2);
-            }
             
             .dataframe {
-               
                 width: 40%;
             }
             
