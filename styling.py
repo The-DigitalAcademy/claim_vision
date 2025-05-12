@@ -56,7 +56,7 @@ def custom_styling():
 
             .hero-container p {
                 font-family: "Open Sans", sans-serif;
-                font-weight: 300;
+                font-weight: bold;
                 font-size: 24px;
                 color: white;
                 margin-top: 20px;
@@ -137,7 +137,7 @@ def custom_styling():
             .stNumberInput input[type="number"]:focus {
                 border: 2px solid #77be5cff !important;
                 outline: none !important;
-                box-shadow: 0 0 0 3px rgba(119, 190, 92, 0.3) !important;
+                
             }
 
            
@@ -146,6 +146,17 @@ def custom_styling():
                 color: white !important;
                 border: none !important;
             }
+            
+            .stNumberInput > div > div > button:first-of-type {
+                background-color: #77be5cff;
+                margin-left: -4px;
+            }
+
+            .stNumberInput > div > div > button:last-of-type {
+                background-color: #77be5cff;
+                border-radius: 0 5px 5px 0;
+            }
+
             
               .st-e7 {
                padding-right: 0;
@@ -162,9 +173,9 @@ def custom_styling():
 
             
             .stDateInput input[type="text"]:focus {
-                border: 1px solid #77be5cff !important;
+                border: 2px solid #77be5cff !important;
                 outline: none !important;
-                box-shadow: 0 0 0 3px rgba(119, 190, 92, 0.3) !important;
+                
             }
             
             .dataframe {
