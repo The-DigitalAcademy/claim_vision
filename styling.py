@@ -130,7 +130,7 @@ def custom_styling():
                 background-color: white !important;
                 border: 2px solid #77be5cff !important;
                 color: black !important;
-                border-radius: 5px !important;
+                border-radius: 6px !important;
                 padding: 6px 10px !important;
             }
 
