@@ -37,7 +37,6 @@ custom_styling()
 
 image_path = os.path.join(IMAGE_DIR, 'final.png')
 
-# Read and encode the image in base64
 with open(image_path, "rb") as img_file:
     image_base64 = base64.b64encode(img_file.read()).decode()
 
@@ -100,68 +99,108 @@ def load_or_create_encoders():
 def train_model(train_data):
     from sklearn.tree import DecisionTreeClassifier
     
+    # Convert date columns to datetime format
     train_data['Policy_Start_Date'] = pd.to_datetime(train_data['Policy_Start_Date'])
     train_data['Policy_End_Date'] = pd.to_datetime(train_data['Policy_End_Date'])
     train_data['First_Transaction_Date'] = pd.to_datetime(train_data['First_Transaction_Date'])
     
+    # Clean age - remove ages below 18
+    def clean_age(age):
+        if age < 18:
+            return np.nan  
+        return age
+    
+    train_data['Age'] = train_data['Age'].apply(clean_age)
+    age_mean = train_data['Age'].mean()
+    train_data['Age'].fillna(age_mean, inplace=True)
+    
+    # Create date-based features
     train_data['Policy_Duration'] = (train_data['Policy_End_Date'] - train_data['Policy_Start_Date']).dt.days
     train_data['Customer_Tenure'] = (train_data['Policy_Start_Date'] - train_data['First_Transaction_Date']).dt.days
     train_data['Recency'] = (pd.Timestamp.today() - train_data['Policy_End_Date']).dt.days
     
+    # Handle categorical columns (we know they're already front-filled)
     categorical_columns = ['Gender', 'Car_Category', 'Subject_Car_Colour', 'Subject_Car_Make', 'LGA_Name', 'State', 'ProductName']
     for col in categorical_columns:
         train_data[col] = train_data[col].fillna('Unknown')
     
-    numerical_columns = ['Age', 'No_Pol', 'Policy_Duration', 'Customer_Tenure', 'Recency']
-    for col in numerical_columns:
-        train_data[col] = train_data[col].fillna(train_data[col].mean())
-    
+    # Encode categorical variables
     encoder = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
     encoded_data = encoder.fit_transform(train_data[categorical_columns])
     encoded_df = pd.DataFrame(encoded_data, columns=encoder.get_feature_names_out(categorical_columns))
     
+    # Scale numerical features
+    numerical_columns = ['Age', 'No_Pol', 'Policy_Duration', 'Customer_Tenure', 'Recency']
     scaler = StandardScaler()
     train_data[numerical_columns] = scaler.fit_transform(train_data[numerical_columns])
     
+    # Combine features and prepare for modeling
     X = train_data.drop(columns=categorical_columns + ['ID', 'target', 'Policy_Start_Date', 'Policy_End_Date', 'First_Transaction_Date'])
     X = pd.concat([X.reset_index(drop=True), encoded_df.reset_index(drop=True)], axis=1)
     y = train_data['target']
     
+    # Train the model
     model = DecisionTreeClassifier(random_state=42)
     model.fit(X, y)
+    
+    # Save the encoder and scaler for later use
+    encoder_path = os.path.join(MODEL_DIR, 'encoder.pkl')
+    scaler_path = os.path.join(MODEL_DIR, 'scaler.pkl')
+    joblib.dump(encoder, encoder_path)
+    joblib.dump(scaler, scaler_path)
     
     return model
 
 def preprocess_data(df, encoder, scaler):
+    # Convert date columns to datetime
     date_columns = ['Policy_Start_Date', 'Policy_End_Date', 'First_Transaction_Date']
     for col in date_columns:
         if col in df.columns:
             df[col] = pd.to_datetime(df[col])
     
+    # Clean age - remove ages below 18
+    def clean_age(age):
+        if age < 18:
+            return np.nan  
+        return age
+    
+    if 'Age' in df.columns:
+        df['Age'] = df['Age'].apply(clean_age)
+        age_mean = df['Age'].mean()
+        df['Age'] = df['Age'].filla(age_mean)
+    
+    # Create date-based features
     df['Policy_Duration'] = (df['Policy_End_Date'] - df['Policy_Start_Date']).dt.days
     df['Customer_Tenure'] = (df['Policy_Start_Date'] - df['First_Transaction_Date']).dt.days
     df['Recency'] = (pd.Timestamp.today() - df['Policy_End_Date']).dt.days
     
+    # Handle categorical columns (we know they're already front-filled)
     categorical_columns = ['Gender', 'Car_Category', 'Subject_Car_Colour', 'Subject_Car_Make', 'LGA_Name', 'State', 'ProductName']
     for col in categorical_columns:
         if col in df.columns:
             df[col] = df[col].fillna('Unknown')
     
+    # Encode categorical data
     encoded_data = encoder.transform(df[categorical_columns])
     encoded_df = pd.DataFrame(encoded_data, columns=encoder.get_feature_names_out(categorical_columns))
     
+    # Prepare feature dataframe
     feature_df = df.drop(columns=categorical_columns + ['Policy_Start_Date', 'Policy_End_Date', 'First_Transaction_Date'])
     
+    # Preserve ID column if it exists
     id_col = None
     if 'ID' in feature_df.columns:
         id_col = feature_df['ID'].copy()
         feature_df = feature_df.drop(columns=['ID'])
     
+    # Drop target column if it exists
     if 'target' in feature_df.columns:
         feature_df = feature_df.drop(columns=['target'])
     
+    # Combine numerical and encoded features
     feature_df = pd.concat([feature_df.reset_index(drop=True), encoded_df.reset_index(drop=True)], axis=1)
     
+    # Scale numerical features
     numerical_columns = ['Age', 'No_Pol', 'Policy_Duration', 'Customer_Tenure', 'Recency']
     for col in numerical_columns:
         if col in feature_df.columns:
@@ -170,6 +209,7 @@ def preprocess_data(df, encoder, scaler):
     feature_df[numerical_columns] = scaler.transform(feature_df[numerical_columns])
     
     return feature_df, id_col
+
 
 def get_feature_names_from_data(encoder, scaler):
     """Get feature names by processing a small sample of data"""
